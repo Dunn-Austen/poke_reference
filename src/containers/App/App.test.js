@@ -24,4 +24,17 @@ describe('App', () => {
       expect(mappedProps).toEqual(expected);
     });
   });
+
+  describe('mapDispatchToProps', () => {
+    it('calls dispatch with a cachePokedata action when cachePokedata is called',
+      () => {
+        const mockDispatch = jest.fn();
+        const actionToDispatch = cachePokedata([{pokemon: 'name', url: 'url'}]);
+        const mappedProps = mapDispatchToProps(mockDispatch);
+
+        mappedProps.cachePokedata([{pokemon: 'name', url: 'url'}]);
+
+        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+  });
 })
