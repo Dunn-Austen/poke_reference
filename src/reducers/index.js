@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { placeholderReducer } from './placeholderReducer';
+import { pokedataReducer } from './pokedataReducer';
 
 const rootReducer = combineReducers({
-  placeholder: placeholderReducer
+  pokedata: pokedataReducer
 });
 
 export default rootReducer;
