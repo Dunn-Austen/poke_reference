@@ -17,3 +17,13 @@ export const fetchTypes = () => {
       return response.json()
     })
 }
+
+export const fetchPokemonData = (pokemon) => {
+  return fetch(`https://pokeapi.co/api/v2/${pokemon}`)
+    .then(response => {
+      if (!response.ok) {
+        throw Error('Error with fetchPokemonData')
+      }
+      return response.json()
+    })
+}
