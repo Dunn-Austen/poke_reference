@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import { fetchEmAll } from '../../apiCalls'
 import { cachePokedata, handleError } from '../../actions';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 export class App extends Component {
   componentDidMount() {
@@ -22,13 +23,22 @@ export class App extends Component {
       <main>
         Placeholder
       </main>
-    );
-  };
+    )
+  }
 }
+
+export const mapStateToProps = state => ({
+  pokeData: state.pokeData
+})
 
 export const mapDispatchToProps = dispatch => ({
   cachePokedata: pokeData => dispatch(cachePokedata(pokeData)),
   handleError: errorMessage => dispatch(handleError(errorMessage))
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+App.propTypes = {
+  pokeData:PropTypes.array,
+  cachePokedata: PropTypes.func,
+  handleError: PropTypes.func,
+}
