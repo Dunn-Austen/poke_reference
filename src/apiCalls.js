@@ -27,3 +27,13 @@ export const fetchPokemonData = (pokemon) => {
       return response.json()
     })
 }
+
+export const fetchTypeData = (pokeType) => {
+  return fetch(`https://pokeapi.co/api/v2/type/${pokeType}`)
+    .then(response => {
+      if (!response.ok) {
+        throw Error('Error with fetchTypeData')
+      }
+      return response.json()
+    })
+}
