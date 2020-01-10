@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
 import { fetchEmAll } from '../../apiCalls'
-import { cachePokedata, handleError } from '../../actions';
+import { cachePokedata, handleError, isLoading } from '../../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 export class App extends Component {
   componentDidMount() {
-    const { cachePokedata, handleError } = this.props
+    const { cachePokedata, handleError, isLoading } = this.props
     fetchEmAll()
       .then(data => {
         cachePokedata(data.results)
@@ -33,7 +33,8 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = dispatch => ({
   cachePokedata: pokeData => dispatch(cachePokedata(pokeData)),
-  handleError: errorMessage => dispatch(handleError(errorMessage))
+  handleError: errorMessage => dispatch(handleError(errorMessage)),
+  isLoading: loadingStatus => dispatch(isLoading(loadingStatus))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
