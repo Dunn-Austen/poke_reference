@@ -1,4 +1,4 @@
-export const holdPlace = placeholder => ({
-  type: 'HOLD_PLACE',
-  payload
+export const getPokedata = pokedata => ({
+  type: 'GET_POKEDATA',
+  pokedata
 });
