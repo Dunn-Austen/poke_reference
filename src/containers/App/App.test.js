@@ -36,5 +36,27 @@ describe('App', () => {
 
         expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
+
+    it('calls dispatch with a handleError action when handleError is called',
+      () => {
+        const mockDispatch = jest.fn();
+        const actionToDispatch = handleError('error');
+        const mappedProps = mapDispatchToProps(mockDispatch);
+
+        mappedProps.handleError('error');
+
+        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
+    it('calls dispatch with an isLoading action when isLoading is called',
+      () => {
+        const mockDispatch = jest.fn();
+        const actionToDispatch = isLoading(false);
+        const mappedProps = mapDispatchToProps(mockDispatch);
+
+        mappedProps.isLoading(false);
+
+        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
   });
 })
