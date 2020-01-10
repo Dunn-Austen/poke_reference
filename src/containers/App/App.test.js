@@ -37,6 +37,17 @@ describe('App', () => {
         expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
 
+    it('calls dispatch with a cacheTypes action when cacheTypes is called',
+      () => {
+        const mockDispatch = jest.fn();
+        const actionToDispatch = cacheTypes([{}]);
+        const mappedProps = mapDispatchToProps(mockDispatch);
+
+        mappedProps.cacheNames([{name: 'poison', url: 'url'}]);
+
+        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
     it('calls dispatch with a handleError action when handleError is called',
       () => {
         const mockDispatch = jest.fn();
