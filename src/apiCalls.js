@@ -7,6 +7,3 @@ export const fetchEmAll = () => {
       return response.json()
     })
 }
-
-//Decide on the size of the fetch. Do I want unique fetches triggered by searches
-//using interpolated url strings? Or a massive initial fetch? Let's see the speed implications
