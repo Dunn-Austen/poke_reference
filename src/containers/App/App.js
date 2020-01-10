@@ -5,6 +5,7 @@ import { fetchEmAll, fetchTypes } from '../../apiCalls'
 import { cacheNames, cacheTypes, handleError, isLoading } from '../../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import SearchBar from '../SearchBar/SearchBar'
 
 export class App extends Component {
   componentDidMount() {
@@ -29,7 +30,7 @@ export class App extends Component {
   render = () => {
     return (
       <main>
-        Placeholder
+        <SearchBar />
       </main>
     )
   }
