@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
-import { cachePokedata, handleError, isLoading } from '../../actions';
+import { cacheNames, cacheTypes handleError, isLoading } from '../../actions';
 import { fetchEmAll } from './../../apiCalls';
 
 jest.mock('./../../apiCalls.js');
@@ -12,12 +12,12 @@ describe('App', () => {
   describe('mapsStateToProps', () => {
     it('should return only the pertinent information from the redux store', () => {
       const mockState = {
-        pokeData: [{pokemon: 'name', url: 'url'}],
+        pokeNames: [{pokemon: 'name', url: 'url'}],
         errorMessage: '',
         isLoading: false
       };
       const expected = {
-        pokeData: [{pokemon: 'name', url: 'url'}],
+        pokeNames: [{pokemon: 'name', url: 'url'}],
       };
       const mappedProps = mapStateToProps(mockState);
 
@@ -26,13 +26,13 @@ describe('App', () => {
   });
 
   describe('mapDispatchToProps', () => {
-    it('calls dispatch with a cachePokedata action when cachePokedata is called',
+    it('calls dispatch with a cacheNames action when cacheNames is called',
       () => {
         const mockDispatch = jest.fn();
-        const actionToDispatch = cachePokedata([{pokemon: 'name', url: 'url'}]);
+        const actionToDispatch = cacheNames([{pokemon: 'name', url: 'url'}]);
         const mappedProps = mapDispatchToProps(mockDispatch);
 
-        mappedProps.cachePokedata([{pokemon: 'name', url: 'url'}]);
+        mappedProps.cacheNames([{pokemon: 'name', url: 'url'}]);
 
         expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });

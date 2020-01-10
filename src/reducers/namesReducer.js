@@ -1,6 +1,6 @@
-export const pokedataReducer = (state = [], action) => {
+export const namesReducer = (state = [], action) => {
   switch (action.type) {
-    case 'GET_POKEDATA':
+    case 'CACHE_NAMES':
       return action.pokedata
     default:
       return state;
