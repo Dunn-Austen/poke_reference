@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
-import { fetchEmAll } from '../../apiCalls'
+import { fetchEmAll, fetchTypes } from '../../apiCalls'
 import { cacheNames, cacheTypes, handleError, isLoading } from '../../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -14,7 +14,15 @@ export class App extends Component {
         cacheNames(data.results)
       })
       .catch(error => {
-        handleError('Error with pokedata retrieval')
+        handleError('Error with pokeNames retrieval')
+      })
+
+    fetchTypes()
+      .then(data => {
+        cacheTypes(data.results)
+      })
+      .catch(error => {
+        handleError('Error with pokeTypes retrieval')
       })
   }
 
@@ -28,18 +36,21 @@ export class App extends Component {
 }
 
 export const mapStateToProps = state => ({
-  pokeData: state.pokeData
+  pokeNames: state.pokeNames
 })
 
 export const mapDispatchToProps = dispatch => ({
   cacheNames: pokeNames => dispatch(cacheNames(pokeNames)),
+  cacheTypes: pokeTypes => dispatch(cacheTypes(pokeTypes)),
   handleError: errorMessage => dispatch(handleError(errorMessage)),
   isLoading: loadingStatus => dispatch(isLoading(loadingStatus))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 App.propTypes = {
-  pokeData:PropTypes.array,
-  cachePokedata: PropTypes.func,
+  pokeNames:PropTypes.array,
+  cacheNames: PropTypes.func,
+  cacheTypes: PropTypes.func,
   handleError: PropTypes.func,
+  isLoading: PropTypes.func,
 }
