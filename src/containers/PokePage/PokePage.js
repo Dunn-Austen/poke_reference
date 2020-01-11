@@ -9,15 +9,26 @@ export const PokePage = props => {
   const { pokeData, pokeTypes } = props;
 
   return (
-    <section className='poke-page'>
-      <div className='sections-container'>
-        <section className='main-left'>
+    <div className='poke-page'>
+      <section className='main-left'>
+        <h1>Types Container</h1>
+      </section>
+      <section className='main-right'>
+        <section className='images-container'>
+          
         </section>
-        <section className='main-right'>
+        <section className='tactics-container'>
+          <div className='weak-against'>
 
+
+          </div>
+          <div className='suggested-pokemon'>
+
+
+          </div>
         </section>
-      </div>
-    </section>
+      </section>
+    </div>
   )
 }
 
