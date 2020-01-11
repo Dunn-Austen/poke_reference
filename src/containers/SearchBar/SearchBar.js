@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 import './SearchBar.css';
-import { fetchPokemonData, fetchTypes } from '../../apiCalls'
+import { fetchPokemonData, fetchTypeData } from '../../apiCalls'
 import { storePokemon, cacheTypes, handleError, isLoading } from '../../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 
 export const SearchBar = props => {
-  const { storePokemon, cacheTypes, handleError, isLoading } = props;
   let inputValue;
-  
+  let currentTypesData;
+  const { pokeData, storePokemon, cacheTypes, handleError, isLoading } = props;
+
+  //
+  // pokeData.sprites.front_shiny
+  // pokeData.sprites.front_default
+  // pokeData.types.name/url
+
+  //If the code is too crowded in the JSX, I can consider using some local state error handling
+  //and converting this to a class component so that I can test a handleSubmit function where the logic could live
+
   return (
     <section className='search-container'>
       <h1 className='search-prompt'>Find your Foe</h1>
@@ -19,13 +28,27 @@ export const SearchBar = props => {
         type='text'
         placeholder='Mind your spelling'
         onChange={(event) => {
-          inputValue = event.target.value
+          inputValue = event.target.value.toLowerCase()
+          console.log(inputValue)
         }}
       />
       <button
         className="search-btn"
         onClick={(event) => {
-          storePokemon(inputValue)
+          fetchPokemonData(inputValue)
+            .then(data => {
+              storePokemon(data)
+              fetchTypeData(data)
+                .then(data => {
+                  cacheTypes(data)
+                })
+                .catch(error => {
+                  handleError('Error with pokeTypes retrieval')
+                })
+              })
+            .catch(error => {
+              handleError('Error with pokeData retrieval')
+            })
         }}
       >
         Search
@@ -34,16 +57,21 @@ export const SearchBar = props => {
   )
 }
 
+export const mapStateToProps = state => ({
+  pokeData: state.pokeData
+})
+
 export const mapDispatchToProps = dispatch => ({
   storePokemon: pokeData => dispatch(storePokemon(pokeData)),
   cacheTypes: pokeTypes => dispatch(cacheTypes(pokeTypes)),
   handleError: errorMessage => dispatch(handleError(errorMessage))
 });
 
-export default connect(null, mapDispatchToProps)(SearchBar);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
 
 SearchBar.propTypes = {
-  storePokemon:PropTypes.func,
+  pokeData: PropTypes.object,
+  storePokemon: PropTypes.func,
   cacheTypes: PropTypes.func,
   handleError: PropTypes.func,
 }

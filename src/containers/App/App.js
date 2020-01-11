@@ -17,14 +17,6 @@ export class App extends Component {
       .catch(error => {
         handleError('Error with pokeNames retrieval')
       })
-
-    fetchTypes()
-      .then(data => {
-        cacheTypes(data.results)
-      })
-      .catch(error => {
-        handleError('Error with pokeTypes retrieval')
-      })
   }
 
   render = () => {
