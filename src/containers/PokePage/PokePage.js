@@ -30,6 +30,11 @@ export const PokePage = props => {
             src={pokeData.sprites.front_shiny}
             alt={`Image of a shiny ${pokeData.name}`}
           />
+          <img
+            className='sprite'
+            src={pokeData.sprites.back_shiny}
+            alt={`Image of a shiny ${pokeData.name}`}
+          />
         </section>
         <section className='tactics-container'>
           <div className='weak-against'>
