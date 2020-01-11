@@ -6,6 +6,7 @@ import { cacheNames, cacheTypes, handleError, isLoading } from '../../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import SearchBar from '../SearchBar/SearchBar'
+import NavBar from '../NavBar/NavBar'
 
 export class App extends Component {
   componentDidMount() {
