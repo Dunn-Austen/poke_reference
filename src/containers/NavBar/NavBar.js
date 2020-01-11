@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './NavBar.css';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Route } from 'react-router-dom';
 
 
 export const NavBar = props => {
@@ -10,14 +11,22 @@ export const NavBar = props => {
 
   return (
     <header>
-      Placeholder Text
+      <Route exact path='/' render={() =>
+        <h1>Welcome (PokeReference)</h1>
+      }/>
+      <Route exact path='/pokepage' render={() =>
+        <h1>{pokeData.name.toUpperCase()}'s Page</h1>
+      }/>
     </header>
   )
 };
 
-export default NavBar
-// export default connect(mapStateToProps, null)(NavBar);
+export const mapStateToProps = state => ({
+  pokeData: state.pokeData
+});
 
-// NavBar.propTypes = {
-//   pokeData: PropTypes.object
-// }
+export default connect(mapStateToProps, null)(NavBar);
+
+NavBar.propTypes = {
+  pokeData: PropTypes.object
+}
