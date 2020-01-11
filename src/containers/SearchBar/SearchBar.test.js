@@ -6,7 +6,7 @@ import { fetchEmAll } from './../../apiCalls';
 
 jest.mock('./../../apiCalls.js');
 
-describe('App', () => {
+describe('SearchBar', () => {
 
   describe('mapsStateToProps', () => {
     it('should return only the pertinent information from the redux store', () => {
