@@ -15,7 +15,7 @@ export const NavBar = props => {
         <h1>Welcome (PokeReference)</h1>
       }/>
       <Route exact path='/pokepage' render={() =>
-        <h1>{pokeData.name.toUpperCase()}'s Page</h1>
+        <h1>{pokeData.name}'s Page</h1>
       }/>
     </header>
   )

@@ -1,0 +1,31 @@
+.poke-page {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  height: 90vh;
+  width: 100%;
+}
+
+.images-container {
+  border: 1px solid green;
+  height: 50%;
+  width: 50%;
+}
+
+.tactics-container {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  height: 30%;
+  width: 70%;
+}
+
+.weak-against{
+  border: 1px solid purple;
+  width: 100%;
+}
+
+.suggested-pokemon {
+  border: 1px solid gold;
+  width: 100%;
+}
