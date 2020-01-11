@@ -10,13 +10,13 @@ export const PokePage = props => {
 
   return (
     <section className='poke-page'>
-      <header>{pokeData.name.toUpperCase()}</header>
       <div className='sections-container'>
         <section className='main-left'>
         </section>
         <section className='main-right'>
 
         </section>
+      </div>
     </section>
   )
 }
@@ -31,3 +31,4 @@ export default connect(mapStateToProps, null)(PokePage);
 PokePage.propTypes = {
   pokeData: PropTypes.object,
   pokeTypes: PropTypes.array
+}
