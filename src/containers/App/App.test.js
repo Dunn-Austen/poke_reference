@@ -1,13 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
-import { cacheNames, cacheTypes handleError, isLoading } from '../../actions';
+import { cacheNames, cacheTypes, handleError, isLoading } from '../../actions';
 import { fetchEmAll } from './../../apiCalls';
 
 jest.mock('./../../apiCalls.js');
 
 describe('App', () => {
-  let wrapper, mockAddMovies, mockHandleError, mockIsLoading, mockMoviesData;
 
   describe('mapsStateToProps', () => {
     it('should return only the pertinent information from the redux store', () => {
@@ -40,10 +39,10 @@ describe('App', () => {
     it('calls dispatch with a cacheTypes action when cacheTypes is called',
       () => {
         const mockDispatch = jest.fn();
-        const actionToDispatch = cacheTypes([{}]);
+        const actionToDispatch = cacheTypes([{name: 'flying', url: 'url'}]);
         const mappedProps = mapDispatchToProps(mockDispatch);
 
-        mappedProps.cacheNames([{name: 'poison', url: 'url'}]);
+        mappedProps.cacheTypes([{name: 'flying', url: 'url'}]);
 
         expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
