@@ -8,13 +8,7 @@ import PropTypes from 'prop-types';
 
 export const SearchBar = props => {
   let inputValue;
-  let currentTypesData;
-  const { pokeData, storePokemon, cacheTypes, handleError, isLoading } = props;
-
-  //
-  // pokeData.sprites.front_shiny
-  // pokeData.sprites.front_default
-  // pokeData.types.name/url
+  const { storePokemon, cacheTypes, handleError, isLoading } = props;
 
   //If the code is too crowded in the JSX, I can consider using some local state error handling
   //and converting this to a class component so that I can test a handleSubmit function where the logic could live
@@ -64,7 +58,8 @@ export const mapStateToProps = state => ({
 export const mapDispatchToProps = dispatch => ({
   storePokemon: pokeData => dispatch(storePokemon(pokeData)),
   cacheTypes: pokeTypes => dispatch(cacheTypes(pokeTypes)),
-  handleError: errorMessage => dispatch(handleError(errorMessage))
+  handleError: errorMessage => dispatch(handleError(errorMessage)),
+  isLoading: loadingStatus => dispatch(isLoading(loadingStatus)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
