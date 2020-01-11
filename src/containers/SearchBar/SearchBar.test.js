@@ -1,22 +1,24 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { App, mapStateToProps, mapDispatchToProps } from './App';
+import { SearchBar, mapStateToProps, mapDispatchToProps } from './SearchBar';
 import { cacheNames, cacheTypes, handleError, isLoading } from '../../actions';
 import { fetchEmAll } from './../../apiCalls';
 
 jest.mock('./../../apiCalls.js');
 
-describe('App', () => {
+describe('SearchBar', () => {
 
   describe('mapsStateToProps', () => {
     it('should return only the pertinent information from the redux store', () => {
       const mockState = {
         pokeNames: [{pokemon: 'name', url: 'url'}],
+        pokeTypes: [],
         errorMessage: '',
-        isLoading: false
+        isLoading: false,
+        pokeData: {}
       };
       const expected = {
-        pokeNames: [{pokemon: 'name', url: 'url'}],
+        pokeData: {},
       };
       const mappedProps = mapStateToProps(mockState);
 
@@ -25,24 +27,24 @@ describe('App', () => {
   });
 
   describe('mapDispatchToProps', () => {
-    it('calls dispatch with a cacheNames action when cacheNames is called',
+    it('calls dispatch with a cacheTypes action when cacheNames is called',
       () => {
         const mockDispatch = jest.fn();
-        const actionToDispatch = cacheNames([{pokemon: 'name', url: 'url'}]);
+        const actionToDispatch = cacheTypes([{name: 'poison'}]);
         const mappedProps = mapDispatchToProps(mockDispatch);
 
-        mappedProps.cacheNames([{pokemon: 'name', url: 'url'}]);
+        mappedProps.cacheTypes([{name: 'poison'}]);
 
         expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
 
-    it('calls dispatch with a cacheTypes action when cacheTypes is called',
+    it('calls dispatch with a storePokemon action when storePokemon is called',
       () => {
         const mockDispatch = jest.fn();
-        const actionToDispatch = cacheTypes([{name: 'flying', url: 'url'}]);
+        const actionToDispatch = storePokemon([{name: 'pikachu'}]);
         const mappedProps = mapDispatchToProps(mockDispatch);
 
-        mappedProps.cacheTypes([{name: 'flying', url: 'url'}]);
+        mappedProps.storePokemon([{name: 'pikachu'}]);
 
         expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });

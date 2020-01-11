@@ -1,6 +1,11 @@
-export const cachePokedata = pokedata => ({
-  type: 'CACHE_POKEDATA',
-  pokedata
+export const cacheNames = pokeNames => ({
+  type: 'CACHE_NAMES',
+  pokeNames
+});
+
+export const cacheTypes = pokeTypes => ({
+  type: 'CACHE_TYPES',
+  pokeTypes
 });
 
 export const handleError = errorMessage => ({
@@ -11,4 +16,9 @@ export const handleError = errorMessage => ({
 export const isLoading = loadingStatus => ({
   type: 'IS_LOADING',
   loadingStatus
+})
+
+export const storePokemon = pokeData => ({
+  type: 'STORE_POKEMON',
+  pokeData
 })

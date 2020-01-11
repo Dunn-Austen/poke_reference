@@ -1,3 +1,36 @@
 main {
-  background-color: red;
+  background-color: grey;
+  height: 100vh;
+  width: 100%;
+}
+
+header {
+  align-items: center;
+  display: flex;
+  height: 10vh;
+  justify-content: center;
+  width: 100%;
+}
+
+.sections-container {
+  display: flex;
+  flex-direction: row;
+  height: 90vh;
+  width: 100%;
+}
+
+.main-left {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 50%;
+}
+
+.main-right {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 50%;
 }
