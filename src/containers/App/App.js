@@ -22,7 +22,7 @@ export class App extends Component {
   render = () => {
     return (
       <main>
-        <header>Sample text</header>
+        <NavBar />
         <div className='sections-container'>
           <section className='main-left'>
           </section>
