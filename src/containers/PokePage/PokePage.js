@@ -29,55 +29,57 @@ export const PokePage = props => {
 
   return (
     <div className='poke-page'>
-      <section className='pokepage-top'>
-        <section className='images-container'>
-          {pokeData.sprites.front_default &&
-            <img
-              className='sprite'
-              src={pokeData.sprites.front_default}
-              alt={`Front side of ${pokeData.name}`}
-            />
-          }
-          {pokeData.sprites.back_shiny &&
-            <img
-              className='sprite'
-              src={pokeData.sprites.back_shiny}
-              alt={`Back side of a shiny ${pokeData.name}`}
-            />
-          }
-          {pokeData.sprites.front_shiny &&
-            <img
-              className='sprite'
-              src={pokeData.sprites.front_shiny}
-              alt={`Front side of a shiny ${pokeData.name}`}
-            />
-          }
-          {pokeData.sprites.back_default &&
-            <img
-              className='sprite'
-              src={pokeData.sprites.back_default}
-              alt={`Back side of ${pokeData.name}`}
-            />
-          }
-          {!pokeData.sprites.back_default &&
-            !pokeData.sprites.front_shiny &&
-            !pokeData.sprites.back_shiny &&
-            !pokeData.sprites.front_default &&
-              <p>
-                Ultra-Rare Pokemon: No image available
-              </p>
-          }
+      <div className='inner-page'>
+        <section className='pokepage-top'>
+          <section className='images-container'>
+            {pokeData.sprites.front_default &&
+              <img
+                className='sprite'
+                src={pokeData.sprites.front_default}
+                alt={`Front side of ${pokeData.name}`}
+              />
+            }
+            {pokeData.sprites.back_shiny &&
+              <img
+                className='sprite'
+                src={pokeData.sprites.back_shiny}
+                alt={`Back side of a shiny ${pokeData.name}`}
+              />
+            }
+            {pokeData.sprites.front_shiny &&
+              <img
+                className='sprite'
+                src={pokeData.sprites.front_shiny}
+                alt={`Front side of a shiny ${pokeData.name}`}
+              />
+            }
+            {pokeData.sprites.back_default &&
+              <img
+                className='sprite'
+                src={pokeData.sprites.back_default}
+                alt={`Back side of ${pokeData.name}`}
+              />
+            }
+            {!pokeData.sprites.back_default &&
+              !pokeData.sprites.front_shiny &&
+              !pokeData.sprites.back_shiny &&
+              !pokeData.sprites.front_default &&
+                <p>
+                  Ultra-Rare Pokemon: No image available
+                </p>
+            }
+          </section>
         </section>
-      </section>
-      <section className='pokepage-types'>
-        {formattedTypes}
-      </section>
-      <section className='weak-against'>
-        {formattedOpponentTypes}
-      </section>
-      <section className='suggested-pokemon'>
+        <section className='pokepage-types'>
+          {formattedTypes}
+        </section>
+        <section className='weak-against'>
+          {formattedOpponentTypes}
+        </section>
+        <section className='suggested-pokemon'>
 
-      </section>
+        </section>
+      </div>
     </div>
   )
 }
