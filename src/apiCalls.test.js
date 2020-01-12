@@ -3,9 +3,9 @@ import { fetchEmAll, fetchTypes, fetchTypeData, fetchPokemonData, fetchOpponentT
 describe('apiCalls', () => {
   describe('fetchEmAll', () => {
     let mockResponse = [
-      {name: "bulbasaur", url:"https://pokeapi.co/api/v2/pokemon/1/"},
-      {name: "charmander", url:"https://pokeapi.co/api/v2/pokemon/2/"},
-      {name: "squirtle", url:"https://pokeapi.co/api/v2/pokemon/3/"},
+      {name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/'},
+      {name: 'charmander', url: 'https://pokeapi.co/api/v2/pokemon/2/'},
+      {name: 'squirtle', url: 'https://pokeapi.co/api/v2/pokemon/3/'},
     ];
 
     beforeEach(() => {
@@ -17,6 +17,24 @@ describe('apiCalls', () => {
           }
         });
       });
+    });
+
+    it('should be passed the correct URL', () => {
+      fetchEmAll();
+      expect(window.fetch).toHaveBeenCalledWith('https://pokeapi.co/api/v2/pokemon/?limit=4000');
+    });
+
+    it('should return an array of movies', () => {
+      expect(fetchEmAll()).resolves.toEqual(mockResponse);
+    });
+
+    it('should return an error for response that is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        });
+      });
+      expect(fetchEmAll()).rejects.toEqual(Error('Error with fetchEmAll get attempt'));
     });
   });
 })
