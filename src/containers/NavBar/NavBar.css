@@ -1,5 +1,6 @@
 header {
   align-items: center;
+  background-color: gold;
   display: flex;
   height: 10vh;
   justify-content: center;

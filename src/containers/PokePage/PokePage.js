@@ -15,30 +15,46 @@ export const PokePage = props => {
       </section>
       <section className='main-right'>
         <section className='images-container'>
-          <img
-            className='sprite'
-            src={pokeData.sprites.front_default}
-            alt={`Front image of ${pokeData.name}`}
-          />
-          <img
-            className='sprite'
-            src={pokeData.sprites.back_shiny}
-            alt={`Back image of a shiny ${pokeData.name}`}
-          />
-          <img
-            className='sprite'
-            src={pokeData.sprites.front_shiny}
-            alt={`Front image of a shiny ${pokeData.name}`}
-          />
-          <img
-            className='sprite'
-            src={pokeData.sprites.back_default}
-            alt={`Back image of ${pokeData.name}`}
-          />
+          {pokeData.sprites.front_default &&
+            <img
+              className='sprite'
+              src={pokeData.sprites.front_default}
+              alt={`Front image of ${pokeData.name}`}
+            />
+          }
+          {pokeData.sprites.back_shiny &&
+            <img
+              className='sprite'
+              src={pokeData.sprites.back_shiny}
+              alt={`Back image of a shiny ${pokeData.name}`}
+            />
+          }
+          {pokeData.sprites.front_shiny &&
+            <img
+              className='sprite'
+              src={pokeData.sprites.front_shiny}
+              alt={`Front image of a shiny ${pokeData.name}`}
+            />
+          }
+          {pokeData.sprites.back_default &&
+            <img
+              className='sprite'
+              src={pokeData.sprites.back_default}
+              alt={`Back image of ${pokeData.name}`}
+            />
+          }
+          {!pokeData.sprites.back_default &&
+            !pokeData.sprites.front_shiny &&
+            !pokeData.sprites.back_shiny &&
+            !pokeData.sprites.front_default &&
+              <p>
+                Ultra-Rare Pokemon: No image available
+              </p>
+          }
         </section>
         <section className='tactics-container'>
           <div className='weak-against'>
-            
+
 
           </div>
           <div className='suggested-pokemon'>
