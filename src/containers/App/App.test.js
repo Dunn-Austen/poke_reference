@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
 import { cacheNames, cacheTypes, handleError, isLoading, storeOpponentTypes, storePokemon } from '../../actions';
 import { fetchEmAll } from '../../apiCalls';
-// import { fetchEmAll, fetchTypes, fetchTypeData, fetchPokemonData, fetchOpponentTypeData  } from './../../apiCalls';
+// import { fetchEmAll, fetchTypeData, fetchPokemonData, fetchOpponentTypeData  } from './../../apiCalls';
 
 jest.mock('../../apiCalls.js');
 

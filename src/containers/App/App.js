@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import { Route, Link, Switch } from 'react-router-dom';
-import { fetchEmAll, fetchTypes, fetchTypeData, fetchPokemonData, fetchOpponentTypeData } from '../../apiCalls'
+import { fetchEmAll, fetchTypeData, fetchPokemonData, fetchOpponentTypeData } from '../../apiCalls'
 import { cacheNames, cacheTypes, handleError, isLoading, storePokemon, storeOpponentTypes } from '../../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
