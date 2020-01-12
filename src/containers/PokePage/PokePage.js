@@ -10,10 +10,7 @@ export const PokePage = props => {
 
   return (
     <div className='poke-page'>
-      <section className='main-left'>
-        <h1>Types Container</h1>
-      </section>
-      <section className='main-right'>
+      <section className='pokepage-top'>
         <section className='images-container'>
           {pokeData.sprites.front_default &&
             <img
@@ -52,16 +49,15 @@ export const PokePage = props => {
               </p>
           }
         </section>
-        <section className='tactics-container'>
-          <div className='weak-against'>
+      </section>
+      <section className='pokepage-middle'>
+        <h1>Types Container</h1>
+      </section>
+      <section className='weak-against'>
 
+      </section>
+      <section className='suggested-pokemon'>
 
-          </div>
-          <div className='suggested-pokemon'>
-
-
-          </div>
-        </section>
       </section>
     </div>
   )

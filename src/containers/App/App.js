@@ -65,14 +65,14 @@ export class App extends Component {
         <Switch>
           <Route exact path='/' render={() =>
             <div className='sections-container'>
-              <section className='main-left'>
+              <section className='main-top'>
+                <SearchBar />
+              </section>
+              <section className='main-bottom'>
                 <h1 className='list-title'>All Pokemon</h1>
                 <div className='all-pokemon'>
                   {allPokemon}
                 </div>
-              </section>
-              <section className='main-right'>
-                <SearchBar />
               </section>
             </div>
             }
