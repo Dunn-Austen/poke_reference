@@ -18,22 +18,22 @@ export const PokePage = props => {
           <img
             className='sprite'
             src={pokeData.sprites.front_default}
-            alt={`Image of ${pokeData.name}`}
-          />
-          <img
-            className='sprite'
-            src={pokeData.sprites.back_default}
-            alt={`Image of ${pokeData.name}`}
-          />
-          <img
-            className='sprite'
-            src={pokeData.sprites.front_shiny}
-            alt={`Image of a shiny ${pokeData.name}`}
+            alt={`Front image of ${pokeData.name}`}
           />
           <img
             className='sprite'
             src={pokeData.sprites.back_shiny}
-            alt={`Image of a shiny ${pokeData.name}`}
+            alt={`Back image of a shiny ${pokeData.name}`}
+          />
+          <img
+            className='sprite'
+            src={pokeData.sprites.front_shiny}
+            alt={`Front image of a shiny ${pokeData.name}`}
+          />
+          <img
+            className='sprite'
+            src={pokeData.sprites.back_default}
+            alt={`Back image of ${pokeData.name}`}
           />
         </section>
         <section className='tactics-container'>

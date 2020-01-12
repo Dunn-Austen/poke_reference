@@ -5,3 +5,7 @@ header {
   justify-content: center;
   width: 100%;
 }
+
+.pokemon-name {
+  text-transform: capitalize;
+}

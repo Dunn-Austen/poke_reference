@@ -15,15 +15,20 @@
   display: flex;
   flex-direction: row;
   height: 60%;
-  width: 70%;
+  width: 95%;
 }
 
 .weak-against{
   border: 1px solid purple;
-  width: 100%;
+  width: 95%;
 }
 
 .suggested-pokemon {
   border: 1px solid gold;
   width: 100%;
+}
+
+.sprite {
+  height: 100px;
+  width: auto;
 }
