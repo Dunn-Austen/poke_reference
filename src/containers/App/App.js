@@ -65,15 +65,21 @@ export class App extends Component {
         <Switch>
           <Route exact path='/' render={() =>
             <div className='sections-container'>
-              <section className='main-top'>
-                <SearchBar />
-              </section>
-              <section className='main-bottom'>
-                <h1 className='list-title'>All Pokemon</h1>
-                <div className='all-pokemon'>
-                  {allPokemon}
-                </div>
-              </section>
+              <div className='inner-container'>
+                <p className='introductory-text'>
+                  Search using one of the methods below (enter or click a name)
+                  to learn about how best to counter that pokemon's abilities
+                </p>
+                <section className='main-top'>
+                  <SearchBar />
+                </section>
+                <section className='main-bottom'>
+                  <h1 className='list-title'>All Pokemon</h1>
+                  <div className='all-pokemon'>
+                    {allPokemon}
+                  </div>
+                </section>
+              </div>
             </div>
             }
           />
