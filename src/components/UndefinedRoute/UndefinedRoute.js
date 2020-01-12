@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './UndefinedRoute.css';
 
-
 const UndefinedRoute = () => {
   return (
     <section className='undefined-route'>

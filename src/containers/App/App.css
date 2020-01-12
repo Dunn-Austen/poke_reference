@@ -29,8 +29,13 @@ main {
   width: 60%;
 }
 
+.list-title {
+  font-size: 36px;
+}
+
 .all-pokemon {
   align-items: center;
+  border: 2px ridge black;
   display: flex;
   flex-direction: column;
   height: 70%;
@@ -39,6 +44,8 @@ main {
 
 .pokemon-listing {
   display: block;
+  font-size: 25px;
+  text-align: center;
 }
 
 .pokemon-listing:hover {

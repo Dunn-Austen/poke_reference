@@ -66,7 +66,7 @@ export class App extends Component {
           <Route exact path='/' render={() =>
             <div className='sections-container'>
               <section className='main-left'>
-                <h1>All Pokemon</h1>
+                <h1 className='list-title'>All Pokemon</h1>
                 <div className='all-pokemon'>
                   {allPokemon}
                 </div>
