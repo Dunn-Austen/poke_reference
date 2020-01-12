@@ -2,11 +2,42 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
 import { cacheNames, cacheTypes, handleError, isLoading, storeOpponentTypes, storePokemon } from '../../actions';
-import { fetchEmAll, fetchTypes, fetchTypeData, fetchPokemonData, fetchOpponentTypeData  } from './../../apiCalls';
+// import { fetchEmAll, fetchTypes, fetchTypeData, fetchPokemonData, fetchOpponentTypeData  } from './../../apiCalls';
 
-jest.mock('./../../apiCalls.js');
+// jest.mock('./../../apiCalls.js');
 
 describe('App', () => {
+  let wrapper, mockCacheNames, mockCacheTypes, mockHandleError, mockIsLoading, mockStoreOpponentTypes, mockStorePokemon, mockPokeNames;
+
+  beforeEach(() => {
+    mockCacheNames = jest.fn();
+    mockCacheTypes = jest.fn();
+    mockHandleError = jest.fn();
+    mockIsLoading = jest.fn();
+    mockStoreOpponentTypes = jest.fn();
+    mockStorePokemon = jest.fn();
+    mockPokeNames = [
+      {name: "bulbasaur", url:"https://pokeapi.co/api/v2/pokemon/1/"},
+      {name: "charmander", url:"https://pokeapi.co/api/v2/pokemon/2/"},
+      {name: "squirtle", url:"https://pokeapi.co/api/v2/pokemon/3/"},
+    ];
+
+    //Save room for mocking fetch
+
+    wrapper = shallow(<App
+      cacheNames={mockCacheNames}
+      cacheTypes={mockCacheTypes}
+      handleError={mockHandleError}
+      isLoading={mockIsLoading}
+      storePokemon={mockStoreOpponentTypes}
+      storeOpponentTypes={mockStorePokemon}
+      pokeNames={mockPokeNames}
+      />);
+  });
+
+  it('should match the Snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
 
   describe('mapsStateToProps', () => {
     it('should return only the pertinent information from the redux store', () => {
