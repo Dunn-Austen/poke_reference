@@ -1,4 +1,4 @@
-import { fetchEmAll, fetchTypes, fetchTypeData, fetchPokemonData, fetchOpponentTypeData } from './apiCalls';
+import { fetchEmAll, fetchTypeData, fetchPokemonData, fetchOpponentTypeData } from './apiCalls';
 
 describe('apiCalls', () => {
   describe('fetchEmAll', () => {
@@ -37,4 +37,39 @@ describe('apiCalls', () => {
       expect(fetchEmAll()).rejects.toEqual(Error('Error with fetchEmAll get attempt'));
     });
   });
+
+  describe('fetchPokemonData', () => {
+    let mockResponse = {abilities: [], height: 10, name: 'gengar', types: []}
+
+    beforeEach(() => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => {
+            return Promise.resolve(mockResponse);
+          }
+        });
+      });
+    });
+
+    it('should be passed the correct URL', () => {
+      fetchPokemonData();
+      expect(window.fetch).toHaveBeenCalledWith('https://pokeapi.co/api/v2/pokemon/undefined');
+    });
+
+    it('should return an array of movies', () => {
+      expect(fetchPokemonData()).resolves.toEqual(mockResponse);
+    });
+
+    it('should return an error for response that is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        });
+      });
+      expect(fetchPokemonData()).rejects.toEqual(Error('Error with fetchPokemonData'));
+    });
+  });
+
+
 })
