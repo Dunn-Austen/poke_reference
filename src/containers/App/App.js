@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { fetchEmAll, fetchTypes } from '../../apiCalls'
 import { cacheNames, cacheTypes, handleError, isLoading } from '../../actions';
 import { connect } from 'react-redux';
@@ -21,13 +21,26 @@ export class App extends Component {
       })
   }
 
+
   render = () => {
+    const { pokeNames } = this.props;
+    const allPokemon = pokeNames.map(pokemon => {
+      return (
+        <a className='pokemon-listing'>
+          {pokemon.name.toUpperCase()}
+        </a>
+      )
+    });
     return (
       <main>
         <NavBar />
         <Route exact path='/' render={() =>
           <div className='sections-container'>
             <section className='main-left'>
+              <h1>All Pokemon</h1>
+              <div className='all-pokemon'>
+                {allPokemon}
+              </div>
             </section>
             <section className='main-right'>
               <SearchBar />
