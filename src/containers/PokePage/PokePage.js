@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 
 export const PokePage = props => {
-  const { pokeData, pokeTypes } = props;
+  const { pokeData, pokeTypes, opponentTypes } = props;
   const allTypes = pokeData.types.map(pokeType => {
     return pokeType.type.name
   });
@@ -13,6 +13,16 @@ export const PokePage = props => {
     return (
       <p className='formatted-type' key={type}>
         {type}
+      </p>
+    )
+  });
+  const opponentTypeNames = opponentTypes.map(type => {
+    return type.name
+  })
+  const formattedOpponentTypes = opponentTypeNames.map(name => {
+    return (
+      <p className='opponent-type' key={name}>
+        {name}
       </p>
     )
   });
@@ -63,7 +73,7 @@ export const PokePage = props => {
         {formattedTypes}
       </section>
       <section className='weak-against'>
-
+        {formattedOpponentTypes}
       </section>
       <section className='suggested-pokemon'>
 
@@ -74,7 +84,8 @@ export const PokePage = props => {
 
 export const mapStateToProps = state => ({
   pokeData: state.pokeData,
-  pokeTypes: state.pokeTypes
+  pokeTypes: state.pokeTypes,
+  opponentTypes: state.opponentTypes
 })
 
 export default connect(mapStateToProps, null)(PokePage);

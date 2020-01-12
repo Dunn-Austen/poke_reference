@@ -23,14 +23,15 @@
 
 .weak-against{
   border: 1px solid purple;
-  height: 300px;
-  width: 75%;
+}
+
+.opponent-type {
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .suggested-pokemon {
   border: 1px solid gold;
-  height: 300px;
-  width: 75%;
 }
 
 .sprite {
