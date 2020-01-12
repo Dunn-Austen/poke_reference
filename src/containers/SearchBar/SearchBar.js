@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import './SearchBar.css';
-import { fetchPokemonData, fetchTypeData } from '../../apiCalls'
+import { fetchPokemonData, fetchTypeData } from '../../apiCalls';
 import { storePokemon, cacheTypes, handleError, isLoading } from '../../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 
 
 export const SearchBar = props => {
   let inputValue;
-  const { storePokemon, cacheTypes, handleError, isLoading } = props;
+  const { storePokemon, cacheTypes, handleError, isLoading, pokeData } = props;
 
   //If the code is too crowded in the JSX, I can consider using some local state error handling
   //and converting this to a class component so that I can test a handleSubmit function where the logic could live
 
-  return (
+  return pokeData.name ? (
+      <Redirect to='/pokepage' />
+    ) : (
     <section className='search-container'>
       <h1 className='search-prompt'>Find your Foe</h1>
       <label htmlFor='pokefoe-input'>Pokemon Name</label>

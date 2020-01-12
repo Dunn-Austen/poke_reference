@@ -1,0 +1,16 @@
+header {
+  align-items: center;
+  background-color: gold;
+  display: flex;
+  height: 10vh;
+  justify-content: center;
+  width: 100%;
+}
+
+.pokemon-name {
+  text-transform: capitalize;
+}
+
+span {
+  text-transform: lowercase;
+}
