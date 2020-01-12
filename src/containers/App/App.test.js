@@ -2,14 +2,30 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
 import { cacheNames, cacheTypes, handleError, isLoading, storeOpponentTypes, storePokemon } from '../../actions';
+import { fetchEmAll } from '../../apiCalls';
 // import { fetchEmAll, fetchTypes, fetchTypeData, fetchPokemonData, fetchOpponentTypeData  } from './../../apiCalls';
 
-// jest.mock('./../../apiCalls.js');
+jest.mock('../../apiCalls.js');
 
 describe('App', () => {
-  let wrapper, mockCacheNames, mockCacheTypes, mockHandleError, mockIsLoading, mockStoreOpponentTypes, mockStorePokemon, mockPokeNames;
+  let wrapper;
+  let mockCacheNames;
+  let mockCacheTypes;
+  let mockHandleError;
+  let mockIsLoading;
+  let mockStoreOpponentTypes;
+  let mockStorePokemon;
+  let mockPokeNames;
 
   beforeEach(() => {
+    fetchEmAll.mockImplementation(() => {
+      return Promise.resolve([
+          {name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/'},
+          {name: 'charmander', url: 'https://pokeapi.co/api/v2/pokemon/2/'},
+          {name: 'squirtle', url: 'https://pokeapi.co/api/v2/pokemon/3/'}
+        ])
+    });
+
     mockCacheNames = jest.fn();
     mockCacheTypes = jest.fn();
     mockHandleError = jest.fn();
@@ -17,12 +33,10 @@ describe('App', () => {
     mockStoreOpponentTypes = jest.fn();
     mockStorePokemon = jest.fn();
     mockPokeNames = [
-      {name: "bulbasaur", url:"https://pokeapi.co/api/v2/pokemon/1/"},
-      {name: "charmander", url:"https://pokeapi.co/api/v2/pokemon/2/"},
-      {name: "squirtle", url:"https://pokeapi.co/api/v2/pokemon/3/"},
-    ];
-
-    //Save room for mocking fetch
+        {name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/'},
+        {name: 'charmander', url: 'https://pokeapi.co/api/v2/pokemon/2/'},
+        {name: 'squirtle', url: 'https://pokeapi.co/api/v2/pokemon/3/'}
+      ];
 
     wrapper = shallow(<App
       cacheNames={mockCacheNames}
@@ -32,11 +46,15 @@ describe('App', () => {
       storePokemon={mockStoreOpponentTypes}
       storeOpponentTypes={mockStorePokemon}
       pokeNames={mockPokeNames}
-      />);
+      />)
   });
 
   it('should match the Snapshot', () => {
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should invoke fetchEmAll on page load', () => {
+    expect(fetchEmAll).toHaveBeenCalled()
   });
 
   describe('mapsStateToProps', () => {
