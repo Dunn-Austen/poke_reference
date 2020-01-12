@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './App.css';
 import { Route, Link, Switch } from 'react-router-dom';
-import { fetchEmAll, fetchTypes, fetchTypeData, fetchPokemonData } from '../../apiCalls'
-import { cacheNames, cacheTypes, handleError, isLoading, storePokemon } from '../../actions';
+import { fetchEmAll, fetchTypes, fetchTypeData, fetchPokemonData, fetchOpponentTypeData } from '../../apiCalls'
+import { cacheNames, cacheTypes, handleError, isLoading, storePokemon, storeOpponentTypes } from '../../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import SearchBar from '../SearchBar/SearchBar';
@@ -24,7 +24,7 @@ export class App extends Component {
 
   //Return later to extract the sort logic into a util file (remove logic from render)
   render = () => {
-    const { pokeNames, storePokemon, cacheTypes, handleError } = this.props;
+    const { pokeNames, storePokemon, cacheTypes, handleError, storeOpponentTypes } = this.props;
     const sortedNames = [...pokeNames].sort((a,b) => {
       if (a.name < b.name) {
         return -1;
@@ -44,6 +44,13 @@ export class App extends Component {
                 fetchTypeData(data)
                   .then(data => {
                     cacheTypes(data)
+                    fetchOpponentTypeData(data)
+                      .then(data => {
+                        storeOpponentTypes(data)
+                      })
+                      .catch(error => {
+                        console.log('Error with opponentTypes')
+                      })
                   })
                   .catch(error => {
                     console.log('Error with pokeTypes retrieval')
@@ -101,6 +108,7 @@ export const mapDispatchToProps = dispatch => ({
   handleError: errorMessage => dispatch(handleError(errorMessage)),
   isLoading: loadingStatus => dispatch(isLoading(loadingStatus)),
   storePokemon: pokeData => dispatch(storePokemon(pokeData)),
+  storeOpponentTypes: opponentTypes => dispatch(storeOpponentTypes(opponentTypes))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

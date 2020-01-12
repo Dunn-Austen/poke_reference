@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import './SearchBar.css';
-import { fetchPokemonData, fetchTypeData } from '../../apiCalls';
-import { storePokemon, cacheTypes, handleError, isLoading } from '../../actions';
+import { fetchPokemonData, fetchTypeData, fetchOpponentTypeData } from '../../apiCalls';
+import { storePokemon, cacheTypes, handleError, isLoading, storeOpponentTypes } from '../../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-
 
 export class SearchBar extends Component {
   constructor(props) {
@@ -27,7 +26,7 @@ export class SearchBar extends Component {
   }
 
   handleClick(inputValue) {
-    const { storePokemon, cacheTypes, handleError, isLoading } = this.props;
+    const { storePokemon, cacheTypes, handleError, isLoading, pokeTypes, storeOpponentTypes } = this.props;
     this.validateInputs();
     fetchPokemonData(inputValue)
       .then(data => {
@@ -35,6 +34,13 @@ export class SearchBar extends Component {
         fetchTypeData(data)
           .then(data => {
             cacheTypes(data)
+            fetchOpponentTypeData(data)
+              .then(data => {
+                storeOpponentTypes(data)
+              })
+              .catch(error => {
+                console.log('Error with opponentTypes')
+              })
           })
           .catch(error => {
             console.log('Error with pokeTypes retrieval')
@@ -90,7 +96,8 @@ export class SearchBar extends Component {
 export const mapStateToProps = state => ({
   pokeData: state.pokeData,
   pokeNames: state.pokeNames,
-  errorMessage: state.errorMessage
+  errorMessage: state.errorMessage,
+  pokeTypes: state.pokeTypes
 })
 
 export const mapDispatchToProps = dispatch => ({
@@ -98,6 +105,7 @@ export const mapDispatchToProps = dispatch => ({
   cacheTypes: pokeTypes => dispatch(cacheTypes(pokeTypes)),
   handleError: errorMessage => dispatch(handleError(errorMessage)),
   isLoading: loadingStatus => dispatch(isLoading(loadingStatus)),
+  storeOpponentTypes: opponentTypes => dispatch(storeOpponentTypes(opponentTypes))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

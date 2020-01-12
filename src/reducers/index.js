@@ -4,7 +4,7 @@ import { typesReducer } from './typesReducer';
 import { errorReducer } from './errorReducer';
 import { loadingReducer } from './loadingReducer';
 import { pokemonReducer } from './pokemonReducer';
-import { opponentsReducer } from './pokemonReducer';
+import { opponentsReducer } from './opponentsReducer';
 
 const rootReducer = combineReducers({
   pokeNames: namesReducer,
