@@ -1,0 +1,24 @@
+.undefined-route {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  justify-content: center;
+  width: 100%
+}
+
+.surprised-pikachu {
+  height: 200px;
+  width: auto;
+}
+
+.return-home {
+  font-size: 20px;
+  height: 40px;
+  margin-top: 20px;
+  width: 150px;
+}
+
+.return-home:hover {
+  background-color: gold;
+}
