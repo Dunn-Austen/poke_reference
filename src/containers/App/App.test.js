@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
-import { cacheNames, cacheTypes, handleError, isLoading } from '../../actions';
-import { fetchEmAll } from './../../apiCalls';
+import { cacheNames, cacheTypes, handleError, isLoading, storeOpponentTypes, storePokemon } from '../../actions';
+import { fetchEmAll, fetchTypes, fetchTypeData, fetchPokemonData, fetchOpponentTypeData  } from './../../apiCalls';
 
 jest.mock('./../../apiCalls.js');
 
@@ -13,7 +13,10 @@ describe('App', () => {
       const mockState = {
         pokeNames: [{pokemon: 'name', url: 'url'}],
         errorMessage: '',
-        isLoading: false
+        isLoading: false,
+        pokeTypes: [],
+        pokeData: {},
+        opponentTypes: [],
       };
       const expected = {
         pokeNames: [{pokemon: 'name', url: 'url'}],
@@ -65,6 +68,28 @@ describe('App', () => {
         const mappedProps = mapDispatchToProps(mockDispatch);
 
         mappedProps.isLoading(false);
+
+        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
+    it('calls dispatch with an storePokemon action when storePokemon is called',
+      () => {
+        const mockDispatch = jest.fn();
+        const actionToDispatch = storePokemon({name: 'pikachu', abilities: []});
+        const mappedProps = mapDispatchToProps(mockDispatch);
+
+        mappedProps.storePokemon({name: 'pikachu', abilities: []});
+
+        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
+    it('calls dispatch with an storeOpponentTypes action when storeOpponentTypes is called',
+      () => {
+        const mockDispatch = jest.fn();
+        const actionToDispatch = storeOpponentTypes([{damage_relations: {}}]);
+        const mappedProps = mapDispatchToProps(mockDispatch);
+
+        mappedProps.storeOpponentTypes([{damage_relations: {}}]);
 
         expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
