@@ -116,5 +116,6 @@ export default connect(mapStateToProps, null)(PokePage);
 
 PokePage.propTypes = {
   pokeData: PropTypes.object,
-  pokeTypes: PropTypes.array
+  pokeTypes: PropTypes.array,
+  opponentTypes: PropTypes.array
 }
