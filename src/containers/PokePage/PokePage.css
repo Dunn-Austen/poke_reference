@@ -45,6 +45,19 @@
 
 .suggested-pokemon {
   border: 1px solid gold;
+  height: 200px;
+  width: 200px;
+  overflow-x: scroll;
+}
+
+.opponent-name {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.opponent-type {
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .sprite {

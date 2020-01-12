@@ -19,6 +19,7 @@ export const PokePage = props => {
   const opponentTypeNames = opponentTypes.map(type => {
     return type.name
   })
+  // consider removing duplicates here (need unique keys)
   const formattedOpponentTypes = opponentTypeNames.map(name => {
     return (
       <p className='opponent-type' key={name}>
@@ -26,6 +27,27 @@ export const PokePage = props => {
       </p>
     )
   });
+  const opponents = opponentTypes.map(type => {
+    return type.pokemon
+  })
+  const combinedOpponents = [].concat.apply([], opponents);
+  const combinedUniqueOpponents = combinedOpponents.reduce((acc, opponent) => {
+    if (!acc.includes(opponent)) {
+      acc.push(opponent)
+    }
+    return acc
+  }, []);
+  const opponentNames = combinedUniqueOpponents.map(opponent => {
+    return opponent.pokemon.name
+  });
+  const formattedOpponentNames = opponentNames.map(name => {
+    return (
+      <p className='opponent-name' key={name}>
+        {name}
+      </p>
+    )
+  });
+
 
   return (
     <div className='poke-page'>
@@ -77,7 +99,7 @@ export const PokePage = props => {
           {formattedOpponentTypes}
         </section>
         <section className='suggested-pokemon'>
-
+          {formattedOpponentNames}
         </section>
       </div>
     </div>

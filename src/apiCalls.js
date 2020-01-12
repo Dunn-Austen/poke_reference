@@ -47,7 +47,7 @@ export const fetchOpponentTypeData = (pokeTypes) => {
   const opponentTypes = pokeTypes.map(type => {
     return type.damage_relations.double_damage_from
   });
-  var combinedTypes = [].concat.apply([], opponentTypes);
+  const combinedTypes = [].concat.apply([], opponentTypes);
   const promises = combinedTypes.map(type => {
     return fetch(type.url)
       .then(response => {
