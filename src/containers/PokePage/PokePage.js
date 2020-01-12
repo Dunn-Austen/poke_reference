@@ -5,19 +5,17 @@ import PropTypes from 'prop-types';
 
 
 export const PokePage = props => {
-  let inputValue;
   const { pokeData, pokeTypes } = props;
   const allTypes = pokeData.types.map(pokeType => {
     return pokeType.type.name
   });
   const formattedTypes = allTypes.map(type => {
     return (
-      <p className='formatted-type'>
+      <p className='formatted-type' key={type}>
         {type}
       </p>
     )
   });
-  //Need a store property for opponentTypes
 
   return (
     <div className='poke-page'>
@@ -27,28 +25,28 @@ export const PokePage = props => {
             <img
               className='sprite'
               src={pokeData.sprites.front_default}
-              alt={`Front image of ${pokeData.name}`}
+              alt={`Front side of ${pokeData.name}`}
             />
           }
           {pokeData.sprites.back_shiny &&
             <img
               className='sprite'
               src={pokeData.sprites.back_shiny}
-              alt={`Back image of a shiny ${pokeData.name}`}
+              alt={`Back side of a shiny ${pokeData.name}`}
             />
           }
           {pokeData.sprites.front_shiny &&
             <img
               className='sprite'
               src={pokeData.sprites.front_shiny}
-              alt={`Front image of a shiny ${pokeData.name}`}
+              alt={`Front side of a shiny ${pokeData.name}`}
             />
           }
           {pokeData.sprites.back_default &&
             <img
               className='sprite'
               src={pokeData.sprites.back_default}
-              alt={`Back image of ${pokeData.name}`}
+              alt={`Back side of ${pokeData.name}`}
             />
           }
           {!pokeData.sprites.back_default &&
