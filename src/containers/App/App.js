@@ -12,13 +12,13 @@ import UndefinedRoute from '../../components/UndefinedRoute/UndefinedRoute';
 
 export class App extends Component {
   componentDidMount() {
-    const { cacheNames, cacheTypes, handleError, isLoading } = this.props
+    const { cacheNames, cacheTypes } = this.props
     fetchEmAll()
       .then(data => {
         cacheNames(data.results)
       })
       .catch(error => {
-        handleError('Server error. Please refresh the page')
+        console.log('Error with fetching all names')
       })
   }
 
@@ -46,7 +46,7 @@ export class App extends Component {
                     cacheTypes(data)
                   })
                   .catch(error => {
-                    handleError('Error with pokeTypes retrieval')
+                    console.log('Error with pokeTypes retrieval')
                   })
                 })
               .catch(error => {
