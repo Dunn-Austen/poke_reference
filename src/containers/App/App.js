@@ -18,7 +18,7 @@ export class App extends Component {
         cacheNames(data.results)
       })
       .catch(error => {
-        handleError('Error with pokeNames retrieval')
+        handleError('Server error. Please refresh the page')
       })
   }
 
