@@ -7,55 +7,90 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
 
-export const SearchBar = props => {
-  let inputValue;
-  const { storePokemon, cacheTypes, handleError, isLoading, pokeData } = props;
+export class SearchBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: '',
+      error: '',
+    };
+  }
 
-  //If the code is too crowded in the JSX, I can consider using some local state error handling
-  //and converting this to a class component so that I can test a handleSubmit function where the logic could live
+  validateInputs = () => {
+    const { pokeNames } = this.props;
+    const allNames = pokeNames.map(pokemon => {
+      return pokemon.name
+    });
+      if (!allNames.includes(this.state.inputValue)) {
+        this.setState({error: 'Pokemon not found / Spelling error'})
+      }
+  }
 
-  return pokeData.name ? (
-      <Redirect to='/pokepage' />
-    ) : (
-    <section className='search-container'>
-      <h1 className='search-prompt'>Find your Foe</h1>
-      <label htmlFor='pokefoe-input'>Pokemon Name</label>
-      <input
-        id='pokefoe-input'
-        type='text'
-        placeholder='Mind your spelling'
-        onChange={(event) => {
-          inputValue = event.target.value.toLowerCase()
-          console.log(inputValue)
-        }}
-      />
-      <button
-        className="search-btn"
-        onClick={(event) => {
-          fetchPokemonData(inputValue)
-            .then(data => {
-              storePokemon(data)
-              fetchTypeData(data)
-                .then(data => {
-                  cacheTypes(data)
-                })
-                .catch(error => {
-                  handleError('Error with pokeTypes retrieval')
-                })
-              })
-            .catch(error => {
-              handleError('Error with pokeData retrieval')
-            })
-        }}
-      >
-        Search
-      </button>
-    </section>
-  )
+  handleClick(inputValue) {
+    const { storePokemon, cacheTypes, handleError, isLoading } = this.props;
+    this.validateInputs();
+    fetchPokemonData(inputValue)
+      .then(data => {
+        storePokemon(data)
+        fetchTypeData(data)
+          .then(data => {
+            cacheTypes(data)
+          })
+          .catch(error => {
+            console.log('Error with pokeTypes retrieval')
+          })
+        })
+      .catch(error => {
+        handleError('Server error. Try again shortly')
+      })
+  }
+
+  handleInputChange(event) {
+    const { handleError } = this.props;
+    this.setState({error: ''});
+    handleError('');
+    this.setState({ inputValue: event.target.value.toLowerCase() });
+  }
+
+  render () {
+    const { pokeData, errorMessage } = this.props;
+    return pokeData.name ? (
+        <Redirect to='/pokepage' />
+      ) : (
+      <section className='search-container'>
+        <h1 className='search-prompt'>Find your Foe</h1>
+        {this.state.error !== '' &&
+          <h1 className='error'>
+            {this.state.error}
+          </h1>
+        }
+        {this.state.error === '' &&
+          <h1 className='error'>
+            {errorMessage}
+          </h1>
+        }
+        <label htmlFor='pokefoe-input'>Pokemon Name</label>
+        <input
+          id='pokefoe-input'
+          type='text'
+          placeholder='Mind your spelling'
+          onChange={(event) => {this.handleInputChange(event)}}
+        />
+        <button
+          className="search-btn"
+          onClick={(event) => {this.handleClick(this.state.inputValue)}}
+        >
+          Search
+        </button>
+      </section>
+    )
+  }
 }
 
 export const mapStateToProps = state => ({
-  pokeData: state.pokeData
+  pokeData: state.pokeData,
+  pokeNames: state.pokeNames,
+  errorMessage: state.errorMessage
 })
 
 export const mapDispatchToProps = dispatch => ({
