@@ -1,8 +1,10 @@
 header {
   align-items: center;
   background-color: gold;
+  border-bottom: 2px inset black;
+  box-sizing: border-box;
   display: flex;
-  height: 10vh;
+  height: 7vh;
   justify-content: center;
   width: 100%;
 }
