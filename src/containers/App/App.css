@@ -40,3 +40,7 @@ main {
 .pokemon-listing {
   display: block;
 }
+
+.pokemon-listing:hover {
+  color: blue;
+}

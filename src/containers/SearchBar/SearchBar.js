@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './SearchBar.css';
-import { fetchPokemonData, fetchTypeData } from '../../apiCalls'
+import { fetchPokemonData, fetchTypeData } from '../../apiCalls';
 import { storePokemon, cacheTypes, handleError, isLoading } from '../../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';

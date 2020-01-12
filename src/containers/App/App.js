@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './App.css';
 import { Route, Link } from 'react-router-dom';
-import { fetchEmAll, fetchTypes } from '../../apiCalls'
-import { cacheNames, cacheTypes, handleError, isLoading } from '../../actions';
+import { fetchEmAll, fetchTypes, fetchTypeData, fetchPokemonData } from '../../apiCalls'
+import { cacheNames, cacheTypes, handleError, isLoading, storePokemon } from '../../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import SearchBar from '../SearchBar/SearchBar'
@@ -21,9 +21,9 @@ export class App extends Component {
       })
   }
 
-  //Return later to extract the sort logic into a util file
+  //Return later to extract the sort logic into a util file (remove logic from render)
   render = () => {
-    const { pokeNames } = this.props;
+    const { pokeNames, storePokemon, cacheTypes, handleError } = this.props;
     const sortedNames = [...pokeNames].sort((a,b) => {
       if (a.name < b.name) {
         return -1;
@@ -34,12 +34,30 @@ export class App extends Component {
     });
     const allPokemon = sortedNames.map(pokemon => {
       return (
-        <a className='pokemon-listing'>
+        <a
+          className='pokemon-listing'
+          onClick={(event) => {
+            fetchPokemonData(pokemon.name)
+              .then(data => {
+                storePokemon(data)
+                fetchTypeData(data)
+                  .then(data => {
+                    cacheTypes(data)
+                  })
+                  .catch(error => {
+                    handleError('Error with pokeTypes retrieval')
+                  })
+                })
+              .catch(error => {
+                handleError('Error with pokeData retrieval')
+              })
+          }}
+        >
           {pokemon.name.toUpperCase()}
         </a>
       )
     });
-    
+
     return (
       <main>
         <NavBar />
@@ -71,7 +89,8 @@ export const mapDispatchToProps = dispatch => ({
   cacheNames: pokeNames => dispatch(cacheNames(pokeNames)),
   cacheTypes: pokeTypes => dispatch(cacheTypes(pokeTypes)),
   handleError: errorMessage => dispatch(handleError(errorMessage)),
-  isLoading: loadingStatus => dispatch(isLoading(loadingStatus))
+  isLoading: loadingStatus => dispatch(isLoading(loadingStatus)),
+  storePokemon: pokeData => dispatch(storePokemon(pokeData)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
