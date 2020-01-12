@@ -75,7 +75,7 @@ export class App extends Component {
               <div className='inner-container'>
                 <p className='introductory-text'>
                   Search using one of the methods below (enter or click a name)
-                  to learn about how best to counter that pokemon's abilities
+                  to learn about how best to counter that pokemon's elemental abilities
                 </p>
                 <section className='main-top'>
                   <SearchBar />
@@ -118,4 +118,6 @@ App.propTypes = {
   cacheTypes: PropTypes.func,
   handleError: PropTypes.func,
   isLoading: PropTypes.func,
+  storePokemon: PropTypes.func,
+  storeOpponentTypes: PropTypes.func
 }
