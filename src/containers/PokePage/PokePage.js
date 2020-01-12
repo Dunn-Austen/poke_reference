@@ -7,6 +7,17 @@ import PropTypes from 'prop-types';
 export const PokePage = props => {
   let inputValue;
   const { pokeData, pokeTypes } = props;
+  const allTypes = pokeData.types.map(pokeType => {
+    return pokeType.type.name
+  });
+  const formattedTypes = allTypes.map(type => {
+    return (
+      <p className='formatted-type'>
+        {type}
+      </p>
+    )
+  });
+  //Need a store property for opponentTypes
 
   return (
     <div className='poke-page'>
@@ -50,8 +61,8 @@ export const PokePage = props => {
           }
         </section>
       </section>
-      <section className='pokepage-middle'>
-        <h1>Types Container</h1>
+      <section className='pokepage-types'>
+        {formattedTypes}
       </section>
       <section className='weak-against'>
 

@@ -12,6 +12,15 @@
   border: 1px solid green;
 }
 
+.pokepage-types {
+  border: 1px solid black;
+}
+
+.formatted-type {
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .weak-against{
   border: 1px solid purple;
   height: 300px;
