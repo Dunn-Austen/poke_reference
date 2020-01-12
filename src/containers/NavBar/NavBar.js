@@ -13,7 +13,7 @@ export const NavBar = props => {
     <header>
       <Switch>
         <Route exact path='/' render={() =>
-          <h1 className='welcome-text'>Welcome (PokeReference)</h1>
+          <h1 className='welcome-text'>PokeReference</h1>
         }/>
         <Route exact path='/pokepage' render={() =>
           <h1 className='pokemon-name'>{pokeData.name}<span>'s</span> Page</h1>

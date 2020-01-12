@@ -5,42 +5,48 @@ import PropTypes from 'prop-types';
 
 
 export const PokePage = props => {
-  let inputValue;
   const { pokeData, pokeTypes } = props;
+  const allTypes = pokeData.types.map(pokeType => {
+    return pokeType.type.name
+  });
+  const formattedTypes = allTypes.map(type => {
+    return (
+      <p className='formatted-type' key={type}>
+        {type}
+      </p>
+    )
+  });
 
   return (
     <div className='poke-page'>
-      <section className='main-left'>
-        <h1>Types Container</h1>
-      </section>
-      <section className='main-right'>
+      <section className='pokepage-top'>
         <section className='images-container'>
           {pokeData.sprites.front_default &&
             <img
               className='sprite'
               src={pokeData.sprites.front_default}
-              alt={`Front image of ${pokeData.name}`}
+              alt={`Front side of ${pokeData.name}`}
             />
           }
           {pokeData.sprites.back_shiny &&
             <img
               className='sprite'
               src={pokeData.sprites.back_shiny}
-              alt={`Back image of a shiny ${pokeData.name}`}
+              alt={`Back side of a shiny ${pokeData.name}`}
             />
           }
           {pokeData.sprites.front_shiny &&
             <img
               className='sprite'
               src={pokeData.sprites.front_shiny}
-              alt={`Front image of a shiny ${pokeData.name}`}
+              alt={`Front side of a shiny ${pokeData.name}`}
             />
           }
           {pokeData.sprites.back_default &&
             <img
               className='sprite'
               src={pokeData.sprites.back_default}
-              alt={`Back image of ${pokeData.name}`}
+              alt={`Back side of ${pokeData.name}`}
             />
           }
           {!pokeData.sprites.back_default &&
@@ -52,16 +58,15 @@ export const PokePage = props => {
               </p>
           }
         </section>
-        <section className='tactics-container'>
-          <div className='weak-against'>
+      </section>
+      <section className='pokepage-types'>
+        {formattedTypes}
+      </section>
+      <section className='weak-against'>
 
+      </section>
+      <section className='suggested-pokemon'>
 
-          </div>
-          <div className='suggested-pokemon'>
-
-
-          </div>
-        </section>
       </section>
     </div>
   )
