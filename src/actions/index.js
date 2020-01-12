@@ -22,3 +22,8 @@ export const storePokemon = pokeData => ({
   type: 'STORE_POKEMON',
   pokeData
 })
+
+export const storeOpponentTypes = opponentTypes => ({
+  type: 'STORE_OPPONENTS',
+  opponentTypes
+})
