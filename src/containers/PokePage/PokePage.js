@@ -38,7 +38,7 @@ export const PokePage = props => {
         </section>
         <section className='tactics-container'>
           <div className='weak-against'>
-
+            
 
           </div>
           <div className='suggested-pokemon'>

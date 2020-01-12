@@ -21,16 +21,25 @@ export class App extends Component {
       })
   }
 
-
+  //Return later to extract the sort logic into a util file
   render = () => {
     const { pokeNames } = this.props;
-    const allPokemon = pokeNames.map(pokemon => {
+    const sortedNames = [...pokeNames].sort((a,b) => {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (b.name > a.name) {
+          return 1;
+      }
+    });
+    const allPokemon = sortedNames.map(pokemon => {
       return (
         <a className='pokemon-listing'>
           {pokemon.name.toUpperCase()}
         </a>
       )
     });
+    
     return (
       <main>
         <NavBar />

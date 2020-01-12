@@ -30,6 +30,13 @@ main {
 }
 
 .all-pokemon {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   height: 70%;
   overflow-x: scroll;
+}
+
+.pokemon-listing {
+  display: block;
 }
