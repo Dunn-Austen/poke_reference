@@ -39,9 +39,24 @@ export const fetchTypeData = (pokeData) => {
         return response.json()
       })
       .then(data => ({...data}))
-    .catch(error => {
-      console.log('Nested fetch failure')
-    })
+  })
+  return Promise.all(promises);
+}
+
+export const fetchOpponentTypeData = (pokeTypes) => {
+  const opponentTypes = pokeTypes.map(type => {
+    return type.damage_relations.double_damage_from
+  });
+  var combinedTypes = [].concat.apply([], opponentTypes);
+  const promises = combinedTypes.map(type => {
+    return fetch(type.url)
+      .then(response => {
+        if (!response.ok) {
+          throw Error('Error with fetchOpponentTypeData')
+        }
+        return response.json()
+      })
+      .then(data => ({...data}))
   })
   return Promise.all(promises);
 }
