@@ -10,3 +10,7 @@ header {
 .pokemon-name {
   text-transform: capitalize;
 }
+
+span {
+  text-transform: lowercase;
+}

@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import './App.css';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import { fetchEmAll, fetchTypes, fetchTypeData, fetchPokemonData } from '../../apiCalls'
 import { cacheNames, cacheTypes, handleError, isLoading, storePokemon } from '../../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import SearchBar from '../SearchBar/SearchBar'
-import NavBar from '../NavBar/NavBar'
-import PokePage from '../PokePage/PokePage'
+import SearchBar from '../SearchBar/SearchBar';
+import NavBar from '../NavBar/NavBar';
+import PokePage from '../PokePage/PokePage';
+import UndefinedRoute from '../../components/UndefinedRoute/UndefinedRoute';
 
 export class App extends Component {
   componentDidMount() {
@@ -61,21 +62,24 @@ export class App extends Component {
     return (
       <main>
         <NavBar />
-        <Route exact path='/' render={() =>
-          <div className='sections-container'>
-            <section className='main-left'>
-              <h1>All Pokemon</h1>
-              <div className='all-pokemon'>
-                {allPokemon}
-              </div>
-            </section>
-            <section className='main-right'>
-              <SearchBar />
-            </section>
-          </div>
-          }
-        />
-        <Route exact path='/pokepage' component={PokePage} />
+        <Switch>
+          <Route exact path='/' render={() =>
+            <div className='sections-container'>
+              <section className='main-left'>
+                <h1>All Pokemon</h1>
+                <div className='all-pokemon'>
+                  {allPokemon}
+                </div>
+              </section>
+              <section className='main-right'>
+                <SearchBar />
+              </section>
+            </div>
+            }
+          />
+          <Route exact path='/pokepage' component={PokePage} />
+          <Route component={UndefinedRoute} />
+        </Switch>
       </main>
     )
   }
