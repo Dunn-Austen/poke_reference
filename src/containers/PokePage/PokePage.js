@@ -16,16 +16,12 @@ export const PokePage = props => {
       </p>
     )
   });
-  // const opponentTypeNames = opponentTypes.map(type => {
-  //   return type.name
-  // })
   const opponentTypeNames = opponentTypes.reduce((acc, type) => {
     if (!acc.includes(type.name)) {
       acc.push(type.name)
     }
     return acc
   }, []);
-
   const formattedOpponentTypes = opponentTypeNames.map(name => {
     return (
       <p className='opponent-type' key={name}>

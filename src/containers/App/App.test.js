@@ -57,6 +57,12 @@ describe('App', () => {
     expect(fetchEmAll).toHaveBeenCalled()
   });
 
+  // it('should invoke fetchPokemonData when link is clicked', () => {
+  //   const mockArgument = 'pikachu';
+  //   wrapper.find('a').simulate('click', mockArgument);
+  //   expect(fetchPokemonData).toHaveBeenCalledWith(mockArgument);
+  // });
+
   describe('mapsStateToProps', () => {
     it('should return only the pertinent information from the redux store', () => {
       const mockState = {
