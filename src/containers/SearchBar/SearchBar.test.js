@@ -87,8 +87,7 @@ describe('SearchBar', () => {
     expect(wrapper.instance().validateInputs).toHaveBeenCalled();
   });
 
-  it('should setState when validateInputs when the spelling fails to match the names list',
-  () => {
+  it('should setState when validateInputs when the spelling fails to match the names list', () => {
     const initialState = {
       inputValue: '',
       error: ''
@@ -104,8 +103,7 @@ describe('SearchBar', () => {
     expect(wrapper.state()).toEqual(alteredState);
   });
 
-  it('should setState when handleClick is triggered with a spelling error',
-  () => {
+  it('should setState when handleClick is triggered with a spelling error', () => {
     const initialState = {
       inputValue: '',
       error: ''
@@ -121,8 +119,7 @@ describe('SearchBar', () => {
     expect(wrapper.state()).toEqual(alteredState);
   });
 
-  it('should setState when handleInputChange is triggered',
-  () => {
+  it('should setState when handleInputChange is triggered', () => {
     const mockEvent = { target: { value: 'zapdos' } };
     const initialState = {
       inputValue: '',
@@ -139,13 +136,17 @@ describe('SearchBar', () => {
     expect(wrapper.state()).toEqual(alteredState);
   });
 
-  it('should invoke handleError when handleInputChange is called',
-  () => {
+  it('should invoke handleError when handleInputChange is called', () => {
     const mockEvent = { target: { value: 'zapdos' } };
     wrapper.instance().handleInputChange(mockEvent);
     expect(mockHandleError).toHaveBeenCalled();
   });
 
+  it('should invoke fetchPokemonData when handleClick is called', () => {
+    const mockArgument = 'pikachu';
+    wrapper.instance().handleClick(mockArgument);
+    expect(fetchPokemonData).toHaveBeenCalledWith(mockArgument);
+  });
 
   describe('mapsStateToProps', () => {
     it('should return only the pertinent information from the redux store', () => {
