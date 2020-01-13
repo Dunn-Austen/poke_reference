@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './NavBar.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 
 
 export const NavBar = props => {
@@ -16,7 +16,15 @@ export const NavBar = props => {
           <h1 className='welcome-text'>PokeReference</h1>
         }/>
         <Route exact path='/pokepage' render={() =>
-          <h1 className='pokemon-name'>{pokeData.name}</h1>
+          <div className='nav-container'>
+            <Link to ='/'>
+              <button className='home'>Return Home</button>
+            </Link>
+            <h1 className='pokemon-name'>{pokeData.name}</h1>
+            <Link to ='/'>
+              <button className='home'>Return Home</button>
+            </Link>
+          </div>
         }/>
         <Route component={() =>
           <h1 className='unefined-route'>Page Not Found</h1>

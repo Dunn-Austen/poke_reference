@@ -8,6 +8,18 @@ header {
   justify-content: center;
   width: 100%;
 }
+.nav-container {
+  align-items:center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.home {
+  border-radius: 50px;
+  height: 40px;
+}
 
 .pokemon-name {
   text-transform: capitalize;
