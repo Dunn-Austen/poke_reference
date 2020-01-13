@@ -1,10 +1,10 @@
 .undefined-route {
   align-items: center;
   background: grey;
-  /* background: linear-gradient(rgba(0, 0, .5, .5), rgba(0, .1, .1, .1)), url('https://cache.desktopnexus.com/thumbseg/1186/1186770-bigthumbnail.jpg');
+  background: linear-gradient(rgba(0, 0, .5, .5), rgba(0, .1, .1, .1)), url('https://i.pinimg.com/originals/1d/a9/01/1da9012381ecbfbfdb455740ad29c9d8.jpg');
   background-blend-mode: lighten saturation;
   background-repeat: no-repeat;
-  background-size: 100% 100%; */
+  background-size: 100% 105%;
   display: flex;
   flex-direction: column;
   height: 93vh;

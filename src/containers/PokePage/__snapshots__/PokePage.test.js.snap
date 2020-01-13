@@ -10,15 +10,6 @@ exports[`PokePage should match the NavBar Snapshot 1`] = `
     <section
       className="pokepage-top"
     >
-      <Link
-        to="/"
-      >
-        <button
-          className="home"
-        >
-          Return Home
-        </button>
-      </Link>
       <section
         className="images-container"
       >

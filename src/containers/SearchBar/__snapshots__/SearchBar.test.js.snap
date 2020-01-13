@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchBar should match the NavBar Snapshot 1`] = `undefined`;
-
 exports[`SearchBar should match the SearchBar Snapshot 1`] = `
 <Redirect
   to="/pokepage"
