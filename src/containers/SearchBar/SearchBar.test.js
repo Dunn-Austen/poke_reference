@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { SearchBar, mapStateToProps, mapDispatchToProps } from './SearchBar';
-import { cacheNames, cacheTypes, handleError, isLoading } from '../../actions';
-import { fetchEmAll } from './../../apiCalls';
+import { cacheNames, cacheTypes, handleError, isLoading, storePokemon, storeOpponentTypes } from '../../actions';
+import { fetchPokemonData, fetchTypeData, fetchOpponentTypeData  } from './../../apiCalls';
 
 jest.mock('./../../apiCalls.js');
 
@@ -11,7 +11,7 @@ describe('SearchBar', () => {
   describe('mapsStateToProps', () => {
     it('should return only the pertinent information from the redux store', () => {
       const mockState = {
-        pokeNames: [{pokemon: 'name', url: 'url'}],
+        pokeNames: [{pokemon: 'alakazam', url: 'url'}],
         pokeTypes: [],
         errorMessage: '',
         isLoading: false,
@@ -19,6 +19,9 @@ describe('SearchBar', () => {
       };
       const expected = {
         pokeData: {},
+        pokeNames: [{pokemon: 'alakazam', url: 'url'}],
+        errorMessage: '',
+        pokeTypes: []
       };
       const mappedProps = mapStateToProps(mockState);
 
@@ -67,6 +70,17 @@ describe('SearchBar', () => {
         const mappedProps = mapDispatchToProps(mockDispatch);
 
         mappedProps.isLoading(false);
+
+        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
+    it('calls dispatch with an storeOpponentTypes action when storeOpponentTypes is called',
+      () => {
+        const mockDispatch = jest.fn();
+        const actionToDispatch = storeOpponentTypes([{type: {name: 'poison'}}, {}]);
+        const mappedProps = mapDispatchToProps(mockDispatch);
+
+        mappedProps.storeOpponentTypes([{type: {name: 'poison'}}, {}]);
 
         expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });

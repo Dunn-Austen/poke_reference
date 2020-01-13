@@ -3,9 +3,22 @@
   background-color: silver;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  height: 120vh;
+  height: 93vh;
+  justify-content: center;
   width: 100%;
+}
+
+.inner-page {
+  align-items: center;
+  background-color: white;
+  border: 10px ridge #efc415;
+  box-shadow: 0px 6px 12px 8px black;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 88vh;
+  width: 500px;
 }
 
 .images-container {
@@ -23,14 +36,28 @@
 
 .weak-against{
   border: 1px solid purple;
-  height: 300px;
-  width: 75%;
+}
+
+.opponent-type {
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .suggested-pokemon {
   border: 1px solid gold;
-  height: 300px;
-  width: 75%;
+  height: 200px;
+  width: 200px;
+  overflow-x: scroll;
+}
+
+.opponent-name {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.opponent-type {
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .sprite {

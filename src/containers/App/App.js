@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import { Route, Link, Switch } from 'react-router-dom';
-import { fetchEmAll, fetchTypes, fetchTypeData, fetchPokemonData, fetchOpponentTypeData } from '../../apiCalls'
+import { fetchEmAll, fetchTypeData, fetchPokemonData, fetchOpponentTypeData } from '../../apiCalls'
 import { cacheNames, cacheTypes, handleError, isLoading, storePokemon, storeOpponentTypes } from '../../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -75,7 +75,7 @@ export class App extends Component {
               <div className='inner-container'>
                 <p className='introductory-text'>
                   Search using one of the methods below (enter or click a name)
-                  to learn about how best to counter that pokemon's abilities
+                  to learn about how best to counter that pokemon's elemental abilities
                 </p>
                 <section className='main-top'>
                   <SearchBar />
@@ -118,4 +118,6 @@ App.propTypes = {
   cacheTypes: PropTypes.func,
   handleError: PropTypes.func,
   isLoading: PropTypes.func,
+  storePokemon: PropTypes.func,
+  storeOpponentTypes: PropTypes.func
 }

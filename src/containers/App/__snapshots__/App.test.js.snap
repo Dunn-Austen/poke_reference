@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match the Snapshot 1`] = `
+<main>
+  <Connect(NavBar) />
+  <Switch>
+    <Route
+      exact={true}
+      path="/"
+      render={[Function]}
+    />
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(PokePage)",
+          "type": [Function],
+        }
+      }
+      exact={true}
+      path="/pokepage"
+    />
+    <Route
+      component={[Function]}
+    />
+  </Switch>
+</main>
+`;

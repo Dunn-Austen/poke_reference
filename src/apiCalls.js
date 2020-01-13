@@ -8,17 +8,6 @@ export const fetchEmAll = () => {
     })
 }
 
-//A perhaps superfluous code block - candidate for removal
-export const fetchTypes = () => {
-  return fetch('https://pokeapi.co/api/v2/type')
-    .then(response => {
-      if (!response.ok) {
-        throw Error('Error with fetchTypes')
-      }
-      return response.json()
-    })
-}
-
 export const fetchPokemonData = (pokemon) => {
   return fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
     .then(response => {
@@ -47,7 +36,7 @@ export const fetchOpponentTypeData = (pokeTypes) => {
   const opponentTypes = pokeTypes.map(type => {
     return type.damage_relations.double_damage_from
   });
-  var combinedTypes = [].concat.apply([], opponentTypes);
+  const combinedTypes = [].concat.apply([], opponentTypes);
   const promises = combinedTypes.map(type => {
     return fetch(type.url)
       .then(response => {
