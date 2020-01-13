@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar should match the NavBar Snapshot 1`] = `
+<header>
+  <Switch>
+    <Route
+      exact={true}
+      path="/"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      path="/pokepage"
+      render={[Function]}
+    />
+    <Route
+      component={[Function]}
+    />
+  </Switch>
+</header>
+`;

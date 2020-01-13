@@ -6,8 +6,7 @@ import { Route, Switch, Link } from 'react-router-dom';
 
 
 export const NavBar = props => {
-  let inputValue;
-  const { pokeData, pokeTypes } = props;
+  const { pokeData } = props;
 
   return (
     <header>
