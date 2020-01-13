@@ -16,13 +16,24 @@ export const NavBar = props => {
         <Route exact path='/' render={() =>
           <h1 className='welcome-text'>PokeReference</h1>
         }/>
-        <Route exact path='/pokepage' render={() =>
+        <Route exact path='/pokesearch' render={() =>
           <div className='nav-container'>
             <Link to ='/'>
+              <button className='home'>Intro Page</button>
+            </Link>
+            <h1 className='welcome-text'>Pokemon Search</h1>
+            <Link to ='/'>
+              <button className='home'>Intro Page</button>
+            </Link>
+          </div>
+        }/>
+        <Route exact path='/pokepage' render={() =>
+          <div className='nav-container'>
+            <Link to ='/pokesearch'>
               <button className='home' onClick={() => {storePokemon(reset)}}>Return Home</button>
             </Link>
             <h1 className='pokemon-name'>{pokeData.name}</h1>
-            <Link to ='/'>
+            <Link to ='/pokesearch'>
               <button className='home' onClick={() => {storePokemon(reset)}}>Return Home</button>
             </Link>
           </div>

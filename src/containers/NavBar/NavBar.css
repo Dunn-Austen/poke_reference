@@ -8,6 +8,7 @@ header {
   justify-content: center;
   width: 100%;
 }
+
 .nav-container {
   align-items:center;
   display: flex;
@@ -18,7 +19,15 @@ header {
 
 .home {
   border-radius: 50px;
-  height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  height: 42px;
+  width: 100px;
+}
+
+.home:hover {
+  background-color: #856B30;
+  color: white;
 }
 
 .pokemon-name {

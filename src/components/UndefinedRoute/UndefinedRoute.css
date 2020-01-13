@@ -1,8 +1,13 @@
 .undefined-route {
   align-items: center;
+  background: grey;
+  /* background: linear-gradient(rgba(0, 0, .5, .5), rgba(0, .1, .1, .1)), url('https://cache.desktopnexus.com/thumbseg/1186/1186770-bigthumbnail.jpg');
+  background-blend-mode: lighten saturation;
+  background-repeat: no-repeat;
+  background-size: 100% 100%; */
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  height: 93vh;
   justify-content: center;
   width: 100%
 }

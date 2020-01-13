@@ -1,6 +1,10 @@
 .poke-page {
   align-items: center;
-  background-color: silver;
+  /* background-color: silver; */
+  background: linear-gradient(rgba(0, 0, .5, .5), rgba(0, .1, .1, .1)), url('https://www.fedupflyers.org/wp-content/uploads/2020/01/wallpaper_of_pokemon_background_hd_image-890x556.jpg');
+  background-blend-mode: lighten saturation;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   display: flex;
   flex-direction: column;
   height: 93vh;
@@ -10,7 +14,7 @@
 
 .inner-page {
   align-items: center;
-  background-color: white;
+  background-color: #B0B6B5;
   border: 10px ridge #efc415;
   box-shadow: 0px 6px 12px 8px black;
   box-sizing: border-box;
@@ -19,9 +23,6 @@
   justify-content: space-around;
   height: 88vh;
   width: 500px;
-}
-
-.images-container {
 }
 
 .sprite {
@@ -63,6 +64,7 @@
   text-shadow: 0px 4px 4px grey;
   text-transform: uppercase;
 }
+
 
 .weak-against{
   align-items: center;
