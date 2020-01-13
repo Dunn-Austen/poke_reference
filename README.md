@@ -15,6 +15,11 @@ Application which fetches data from the PokeAPI to display information on how to
 - Fetch API
 
 **WireFrames**
+![Photo on 1-13-20 at 2 37 PM](https://user-images.githubusercontent.com/42498559/72294369-abed7a80-3612-11ea-9c03-88c2e1b19d8f.jpg)
+
+![Photo on 1-13-20 at 2 38 PM](https://user-images.githubusercontent.com/42498559/72294372-ad1ea780-3612-11ea-820e-c89116e56eee.jpg)
+
+![Photo on 1-13-20 at 2 39 PM](https://user-images.githubusercontent.com/42498559/72294374-ae4fd480-3612-11ea-9f5e-6c9709827abf.jpg)
 
 **ScreenShots**
 ![image](https://user-images.githubusercontent.com/42498559/72292527-cc1b3a80-360e-11ea-9aee-973adbf6afd6.png)
