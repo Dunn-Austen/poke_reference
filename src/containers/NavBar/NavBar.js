@@ -16,7 +16,7 @@ export const NavBar = props => {
           <h1 className='welcome-text'>PokeReference</h1>
         }/>
         <Route exact path='/pokepage' render={() =>
-          <h1 className='pokemon-name'>{pokeData.name}<span>'s</span> Page</h1>
+          <h1 className='pokemon-name'>{pokeData.name}</h1>
         }/>
         <Route component={() =>
           <h1 className='unefined-route'>Page Not Found</h1>
