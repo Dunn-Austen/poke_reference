@@ -1,4 +1,4 @@
-### PokeReference
+# PokeReference
 ## Mod 3 Solo Project - Austen Dunn
 ---
 
