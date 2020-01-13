@@ -7,7 +7,7 @@ Application which fetches data from the PokeAPI to display information on how to
 ## Set Up
 - From the command line, run npm install
 - Run npm start
----
+
 ## Technologies
 - Create-react-app
 - Jest / Enzyme
