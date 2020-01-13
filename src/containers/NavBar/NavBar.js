@@ -3,10 +3,12 @@ import './NavBar.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Route, Switch, Link } from 'react-router-dom';
+import { storePokemon } from '../../actions';
 
 
 export const NavBar = props => {
-  const { pokeData } = props;
+  const { pokeData, storePokemon } = props;
+  const reset = {};
 
   return (
     <header>
@@ -17,11 +19,11 @@ export const NavBar = props => {
         <Route exact path='/pokepage' render={() =>
           <div className='nav-container'>
             <Link to ='/'>
-              <button className='home'>Return Home</button>
+              <button className='home' onClick={() => {storePokemon(reset)}}>Return Home</button>
             </Link>
             <h1 className='pokemon-name'>{pokeData.name}</h1>
             <Link to ='/'>
-              <button className='home'>Return Home</button>
+              <button className='home' onClick={() => {storePokemon(reset)}}>Return Home</button>
             </Link>
           </div>
         }/>
@@ -37,7 +39,11 @@ export const mapStateToProps = state => ({
   pokeData: state.pokeData
 });
 
-export default connect(mapStateToProps, null)(NavBar);
+export const mapDispatchToProps = dispatch => ({
+  storePokemon: pokeData => dispatch(storePokemon(pokeData))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
 
 NavBar.propTypes = {
   pokeData: PropTypes.object
