@@ -68,7 +68,19 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 90px;
   justify-content: space-around;
+  width: 494px;
+}
+
+.weak-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 110px;
+  word-wrap: break-word;
+  justify-content: center;
+  width: 495px;
 }
 
 .opponent-type {

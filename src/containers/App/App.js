@@ -37,6 +37,7 @@ export class App extends Component {
       return (
         <a
           className='pokemon-listing'
+          key={pokemon.id}
           onClick={(event) => {
             fetchPokemonData(pokemon.name)
               .then(data => {
