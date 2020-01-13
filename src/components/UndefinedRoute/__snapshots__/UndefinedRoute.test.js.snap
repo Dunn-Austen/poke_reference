@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UndefinedRoute should match the UndefinedRoute Snapshot 1`] = `
+<section
+  className="undefined-route"
+>
+  <img
+    alt="iconic surprised pikachu face"
+    className="surprised-pikachu"
+    src="https://i.kym-cdn.com/entries/icons/original/000/027/475/Screen_Shot_2018-10-25_at_11.02.15_AM.png"
+  />
+  <Link
+    to="/"
+  >
+    <button
+      className="return-home"
+    >
+      Return Home
+    </button>
+  </Link>
+</section>
+`;
