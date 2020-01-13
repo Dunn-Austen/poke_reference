@@ -9,6 +9,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import NavBar from '../NavBar/NavBar';
 import PokePage from '../PokePage/PokePage';
 import UndefinedRoute from '../../components/UndefinedRoute/UndefinedRoute';
+import ReceptionPage from '../../components/ReceptionPage/ReceptionPage';
 
 export class App extends Component {
   componentDidMount() {
@@ -71,7 +72,8 @@ export class App extends Component {
       <main>
         <NavBar />
         <Switch>
-          <Route exact path='/' render={() =>
+          <Route exact path='/' component={ReceptionPage} />
+          <Route exact path='/pokesearch' render={() =>
             <div className='sections-container'>
               <div className='inner-container'>
                 <p className='introductory-text'>
