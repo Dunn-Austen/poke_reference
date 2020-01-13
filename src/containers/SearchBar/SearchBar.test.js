@@ -32,6 +32,19 @@ describe('SearchBar', () => {
       pokeNames={['abra', 'pikachu']}
       errorMessage={'error'}
     />);
+
+    fetchPokemonData.mockImplementation(() => {
+      return Promise.resolve({abilities: [], height: 10, name: 'gengar', types: []})
+    });
+
+    fetchTypeData.mockImplementation(() => {
+      return Promise.resolve([{damage_relations: {}, id: 15, name: 'ice', pokemon: []}])
+    });
+
+    fetchOpponentTypeData.mockImplementation(() => {
+      return Promise.resolve([{damage_relations: {}, id: 15, name: 'ice', pokemon: []}])
+    });
+
   });
 
   it('should match the SearchBar Snapshot', () => {
@@ -39,12 +52,47 @@ describe('SearchBar', () => {
   });
 
   it('should invoke handleClick on button click', () => {
-  const mockEvent = { preventDefault: jest.fn() };
-  wrapper.instance().handleSubmit = jest.fn();
-  wrapper.find('form').simulate('submit', mockEvent);
+    const mockArgument = 'pikachu';
+    wrapper.instance().handleClick = jest.fn();
+    // wrapper.find('button').simulate('click', mockArgument);
+    wrapper.instance().handleClick();
 
-  expect(wrapper.instance().handleSubmit).toHaveBeenCalledWith(mockEvent);
+    expect(wrapper.instance().handleClick).toHaveBeenCalled();
+  });
+
+  // it('should invoke handleClick on button click', () => {
+  //   const mockArgument = 'pikachu';
+  //   wrapper.instance().handleClick = jest.fn();
+  //   wrapper.find('button').simulate('click', mockArgument);
+  //
+  //   expect(wrapper.instance().handleClick).toHaveBeenCalledWith(mockArgument);
+  // });
+
+  it('should invoke validateInputs when handleClick is called', () => {
+    const mockArgument = 'pikachu';
+    wrapper.instance().validateInputs = jest.fn();
+    wrapper.instance().handleClick(mockArgument);
+
+    expect(wrapper.instance().validateInputs).toHaveBeenCalled();
+  });
+
+  it('should setState when validateInputs when the spelling fails to match the names list',
+  () => {
+    const initialState = {
+      inputValue: '',
+      error: ''
+    };
+    const alteredState = {
+      inputValue: '',
+      error: 'Pokemon not found / Spelling error'
+    };
+    wrapper.setState(initialState);
+    expect(wrapper.state()).toEqual(initialState);
+
+    wrapper.instance().validateInputs();
+    expect(wrapper.state()).toEqual(alteredState);
 });
+
 
   describe('mapsStateToProps', () => {
     it('should return only the pertinent information from the redux store', () => {

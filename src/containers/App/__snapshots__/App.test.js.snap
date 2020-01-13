@@ -5,8 +5,13 @@ exports[`App should match the Snapshot 1`] = `
   <Connect(NavBar) />
   <Switch>
     <Route
+      component={[Function]}
       exact={true}
       path="/"
+    />
+    <Route
+      exact={true}
+      path="/pokesearch"
       render={[Function]}
     />
     <Route
