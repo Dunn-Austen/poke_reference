@@ -2,8 +2,8 @@ import { namesReducer } from './namesReducer';
 
 describe('namesReducer', () => {
   it('should return the initial state', () => {
-    const expected = true;
-    const result = namesReducer(true, {});
+    const expected = [];
+    const result = namesReducer([], {});
 
     expect(result).toEqual(expected);
   });
