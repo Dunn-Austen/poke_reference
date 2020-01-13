@@ -38,6 +38,14 @@ describe('SearchBar', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('should invoke handleClick on button click', () => {
+  const mockEvent = { preventDefault: jest.fn() };
+  wrapper.instance().handleSubmit = jest.fn();
+  wrapper.find('form').simulate('submit', mockEvent);
+
+  expect(wrapper.instance().handleSubmit).toHaveBeenCalledWith(mockEvent);
+});
+
   describe('mapsStateToProps', () => {
     it('should return only the pertinent information from the redux store', () => {
       const mockState = {
@@ -58,6 +66,8 @@ describe('SearchBar', () => {
       expect(mappedProps).toEqual(expected);
     });
   });
+
+
 
   describe('mapDispatchToProps', () => {
     it('calls dispatch with a cacheTypes action when cacheNames is called',
