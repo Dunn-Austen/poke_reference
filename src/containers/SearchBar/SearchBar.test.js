@@ -4,9 +4,39 @@ import { SearchBar, mapStateToProps, mapDispatchToProps } from './SearchBar';
 import { cacheNames, cacheTypes, handleError, isLoading, storePokemon, storeOpponentTypes } from '../../actions';
 import { fetchPokemonData, fetchTypeData, fetchOpponentTypeData  } from './../../apiCalls';
 
-jest.mock('./../../apiCalls.js');
+jest.mock('../../apiCalls.js');
 
 describe('SearchBar', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<SearchBar
+      pokeData={{
+        abilities: [],
+        height: 10,
+        name: 'gengar',
+        types: [],
+        sprites: {
+          back_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png",
+          back_shiny: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/1.png",
+          front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+          front_shiny: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png"
+        }
+      }}
+      pokeTypes={[{damage_relations: {double_damage_from: []}, pokemon: [{pokemon:{name: "abra", url: "https://pokeapi.co/api/v2/pokemon/63/"}}]}]}
+      opponentTypes={[{damage_relations: {double_damage_from: []}, pokemon: [{pokemon:{name: "abra", url: "https://pokeapi.co/api/v2/pokemon/63/"}}]}]}
+      storePokemon={jest.fn()}
+      cacheTypes={jest.fn()}
+      handleError={jest.fn()}
+      isLoading={jest.fn()}
+      storeOpponentTypes={jest.fn()}
+      pokeNames={['abra', 'pikachu']}
+      errorMessage={'error'}
+    />);
+  });
+
+  it('should match the SearchBar Snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
 
   describe('mapsStateToProps', () => {
     it('should return only the pertinent information from the redux store', () => {
