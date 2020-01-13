@@ -8,7 +8,18 @@ jest.mock('../../apiCalls.js');
 
 describe('SearchBar', () => {
   let wrapper;
+  let mockStorePokemon;
+  let mockCacheTypes;
+  let mockHandleError;
+  let mockIsLoading;
+  let mockStoreOpponentTypes;
+
   beforeEach(() => {
+    mockStorePokemon = jest.fn();
+    mockCacheTypes = jest.fn();
+    mockHandleError = jest.fn();
+    mockIsLoading = jest.fn();
+    mockStoreOpponentTypes = jest.fn();
     wrapper = shallow(<SearchBar
       pokeData={{
         abilities: [],
@@ -24,11 +35,11 @@ describe('SearchBar', () => {
       }}
       pokeTypes={[{damage_relations: {double_damage_from: []}, pokemon: [{pokemon:{name: "abra", url: "https://pokeapi.co/api/v2/pokemon/63/"}}]}]}
       opponentTypes={[{damage_relations: {double_damage_from: []}, pokemon: [{pokemon:{name: "abra", url: "https://pokeapi.co/api/v2/pokemon/63/"}}]}]}
-      storePokemon={jest.fn()}
-      cacheTypes={jest.fn()}
-      handleError={jest.fn()}
-      isLoading={jest.fn()}
-      storeOpponentTypes={jest.fn()}
+      storePokemon={mockStorePokemon}
+      cacheTypes={mockCacheTypes}
+      handleError={mockHandleError}
+      isLoading={mockIsLoading}
+      storeOpponentTypes={mockStoreOpponentTypes}
       pokeNames={['abra', 'pikachu']}
       errorMessage={'error'}
     />);
@@ -91,7 +102,49 @@ describe('SearchBar', () => {
 
     wrapper.instance().validateInputs();
     expect(wrapper.state()).toEqual(alteredState);
-});
+  });
+
+  it('should setState when handleClick is triggered with a spelling error',
+  () => {
+    const initialState = {
+      inputValue: '',
+      error: ''
+    };
+    const alteredState = {
+      inputValue: '',
+      error: 'Pokemon not found / Spelling error'
+    };
+    wrapper.setState(initialState);
+    expect(wrapper.state()).toEqual(initialState);
+
+    wrapper.instance().handleClick();
+    expect(wrapper.state()).toEqual(alteredState);
+  });
+
+  it('should setState when handleInputChange is triggered',
+  () => {
+    const mockEvent = { target: { value: 'zapdos' } };
+    const initialState = {
+      inputValue: '',
+      error: 'error'
+    };
+    const alteredState = {
+      inputValue: 'zapdos',
+      error: ''
+    };
+    wrapper.setState(initialState);
+    expect(wrapper.state()).toEqual(initialState);
+
+    wrapper.instance().handleInputChange(mockEvent);
+    expect(wrapper.state()).toEqual(alteredState);
+  });
+
+  it('should invoke handleError when handleInputChange is called',
+  () => {
+    const mockEvent = { target: { value: 'zapdos' } };
+    wrapper.instance().handleInputChange(mockEvent);
+    expect(mockHandleError).toHaveBeenCalled();
+  });
 
 
   describe('mapsStateToProps', () => {
