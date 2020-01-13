@@ -16,10 +16,16 @@ export const PokePage = props => {
       </p>
     )
   });
-  const opponentTypeNames = opponentTypes.map(type => {
-    return type.name
-  })
-  // consider removing duplicates here (need unique keys)
+  // const opponentTypeNames = opponentTypes.map(type => {
+  //   return type.name
+  // })
+  const opponentTypeNames = opponentTypes.reduce((acc, type) => {
+    if (!acc.includes(type.name)) {
+      acc.push(type.name)
+    }
+    return acc
+  }, []);
+
   const formattedOpponentTypes = opponentTypeNames.map(name => {
     return (
       <p className='opponent-type' key={name}>
@@ -32,13 +38,13 @@ export const PokePage = props => {
   })
   const combinedOpponents = [].concat.apply([], opponents);
   const combinedUniqueOpponents = combinedOpponents.reduce((acc, opponent) => {
-    if (!acc.includes(opponent)) {
-      acc.push(opponent)
+    if (!acc.includes(opponent.pokemon.name)) {
+      acc.push(opponent.pokemon.name)
     }
     return acc
   }, []);
   const opponentNames = combinedUniqueOpponents.map(opponent => {
-    return opponent.pokemon.name
+    return opponent
   });
   const formattedOpponentNames = opponentNames.map(name => {
     return (
@@ -47,7 +53,6 @@ export const PokePage = props => {
       </p>
     )
   });
-
 
   return (
     <div className='poke-page'>
@@ -93,14 +98,29 @@ export const PokePage = props => {
           </section>
         </section>
         <section className='pokepage-types'>
-          {formattedTypes}
+          <h1 className='pokepage-h1'>
+            {pokeData.name}<span>'s</span> Types
+          </h1>
+          <div className='organizational-container'>
+            {formattedTypes}
+          </div>
         </section>
         <section className='weak-against'>
-          {formattedOpponentTypes}
+          <h1 className='pokepage-h1'>
+            Weak against
+          </h1>
+          <div className='weak-container'>
+            {formattedOpponentTypes}
+          </div>
         </section>
-        <section className='suggested-pokemon'>
-          {formattedOpponentNames}
-        </section>
+        <div className='opponents-container'>
+          <h1 className='pokepage-h1'>
+            Suggested Opponents
+          </h1>
+          <section className='suggested-pokemon'>
+            {formattedOpponentNames}
+          </section>
+        </div>
       </div>
     </div>
   )

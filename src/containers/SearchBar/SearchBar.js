@@ -115,7 +115,7 @@ SearchBar.propTypes = {
   storePokemon: PropTypes.func,
   cacheTypes: PropTypes.func,
   handleError: PropTypes.func,
-  isLoading: PropTypes.bool,
+  isLoading: PropTypes.func,
   storeOpponentTypes: PropTypes.func,
   pokeNames: PropTypes.array,
   errorMessage: PropTypes.string,

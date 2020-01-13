@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PokePage should match the NavBar Snapshot 1`] = `
+<div
+  className="poke-page"
+>
+  <div
+    className="inner-page"
+  >
+    <section
+      className="pokepage-top"
+    >
+      <Link
+        to="/"
+      >
+        <button
+          className="home"
+        >
+          Return Home
+        </button>
+      </Link>
+      <section
+        className="images-container"
+      >
+        <img
+          alt="Front side of gengar"
+          className="sprite"
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+        />
+        <img
+          alt="Back side of a shiny gengar"
+          className="sprite"
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/1.png"
+        />
+        <img
+          alt="Front side of a shiny gengar"
+          className="sprite"
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png"
+        />
+        <img
+          alt="Back side of gengar"
+          className="sprite"
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png"
+        />
+      </section>
+    </section>
+    <section
+      className="pokepage-types"
+    >
+      <h1
+        className="pokepage-h1"
+      >
+        gengar
+        <span>
+          's
+        </span>
+         Types
+      </h1>
+      <div
+        className="organizational-container"
+      />
+    </section>
+    <section
+      className="weak-against"
+    >
+      <h1
+        className="pokepage-h1"
+      >
+        Weak against
+      </h1>
+      <div
+        className="weak-container"
+      >
+        <p
+          className="opponent-type"
+        />
+      </div>
+    </section>
+    <div
+      className="opponents-container"
+    >
+      <h1
+        className="pokepage-h1"
+      >
+        Suggested Opponents
+      </h1>
+      <section
+        className="suggested-pokemon"
+      >
+        <p
+          className="opponent-name"
+          key="abra"
+        >
+          abra
+        </p>
+      </section>
+    </div>
+  </div>
+</div>
+`;

@@ -9,6 +9,27 @@ header {
   width: 100%;
 }
 
+.nav-container {
+  align-items:center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.home {
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  height: 42px;
+  width: 100px;
+}
+
+.home:hover {
+  background-color: #856B30;
+  color: white;
+}
+
 .pokemon-name {
   text-transform: capitalize;
 }
