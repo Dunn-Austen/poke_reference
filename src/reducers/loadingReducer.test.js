@@ -3,7 +3,7 @@ import { loadingReducer } from './loadingReducer';
 describe('loadingReducer', () => {
   it('should return the initial state', () => {
     const expected = true;
-    const result = loadingReducer(true, {});
+    const result = loadingReducer(undefined, {});
 
     expect(result).toEqual(expected);
   });

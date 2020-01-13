@@ -3,7 +3,7 @@ import { opponentsReducer } from './opponentsReducer';
 describe('opponentsReducer', () => {
   it('should return the initial state', () => {
     const expected = [];
-    const result = opponentsReducer([], {});
+    const result = opponentsReducer(undefined, {});
 
     expect(result).toEqual(expected);
   });

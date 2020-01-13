@@ -3,7 +3,7 @@ import { namesReducer } from './namesReducer';
 describe('namesReducer', () => {
   it('should return the initial state', () => {
     const expected = [];
-    const result = namesReducer([], {});
+    const result = namesReducer(undefined, {});
 
     expect(result).toEqual(expected);
   });
