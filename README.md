@@ -7,6 +7,8 @@ PokeReference is an application that fetches data from the PokeAPI to display in
 PokeReference was a solo project completed over the course of roughly one week. It represented an exercise in implementing React.js using redux and router to build a fully responsive front-end application.  allowed for practice with various types of fetch requests.
 
 ## Set Up
+See deployed application - https://pokereference.herokuapp.com/
+
 - Clone this repo to your local machine. 
 - Run npm install to establish the appropriate dependencies.
 - Run npm start in your terminal.
