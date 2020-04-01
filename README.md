@@ -33,6 +33,9 @@ PokeReference was a solo project completed over the course of roughly one week. 
 
   ![image](https://user-images.githubusercontent.com/42498559/72292527-cc1b3a80-360e-11ea-9aee-973adbf6afd6.png)
 
+  
+  ![image](https://user-images.githubusercontent.com/42498559/78182001-93774a00-7422-11ea-9ee8-5d1e2def2914.png)
+
 </details>
 
 <details>
@@ -40,8 +43,6 @@ PokeReference was a solo project completed over the course of roughly one week. 
 
   ![image](https://user-images.githubusercontent.com/42498559/72292582-e81edc00-360e-11ea-827f-20bce36c0796.png)
 
-
-  ![image](https://user-images.githubusercontent.com/42498559/78182001-93774a00-7422-11ea-9ee8-5d1e2def2914.png)
 
 </details>
 
