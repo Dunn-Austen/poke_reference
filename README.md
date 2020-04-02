@@ -1,5 +1,5 @@
 # PokeReference
-## Mod 3 Solo Project - Austen Dunn
+## Solo Project Practice - Austen Dunn
 ---
 
 PokeReference is an application that fetches data from the PokeAPI to display information on how to best counter a specific pokemon's elemental type. The user is presented with instructions on how to navigate the site and is given the ability to scroll a list or enter search terms for specific pokemon. In doing so, the user is offered advice tailored to assist with battling the specimen of interest.
